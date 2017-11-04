@@ -15,7 +15,7 @@
 	$list="";
 	
     while ($row = mysqli_fetch_array($result)){	
-		$list=$list."<a href='search_result.php?search=".$row['genre_id']."'><div class='cover-item'><p>".$row['genre_name']."</p></div></a>";
+		$list=$list."<a href='search_result.php?genre=".$row['genre_id']."'><div class='cover-item'><p>".$row['genre_name']."</p></div></a>";
     }
 	echo $list;
 ?>
