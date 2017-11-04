@@ -74,7 +74,7 @@
                     $img = "<img src='" .$poster. "' alt='Image not found' title='".$row['title']."' />";
                     $img = $img."<div class='movieDetails'>Movie: <p>".$row['title']."</p>Description: <p>".$row['description']."</p>Director: <p>".$row['director']."</p>Cast: <p>".$casts."</p>Year: <p>".$row['year']."</p>Duration: <p>".$row['duration']." minutes</p>Rating: <p>".$row['rating']."</p>Votes: <p>".$row['votes']."</p>Available Quantity: <p>".$quantity."</p>Price: <p>".$row['price']."</p></div>";
                     
-                    $img = $img."<div class='descDetailContainer'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
+                    $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
                     $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";
                     
                     
