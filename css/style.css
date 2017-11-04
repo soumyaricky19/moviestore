@@ -1,0 +1,145 @@
+body{
+    background-color: #10171b;
+}
+nav.navbar.navbar-inverse{
+    background-color: rgba(10, 10, 10, 1);
+    margin: 0px;
+}
+ul.nav.navbar-nav li{
+    height: 10px;
+}
+div.carousel.slide{
+    margin-top: 20px;
+}
+div.carousel.slide img{
+    width: 441px;
+    height: 520px;
+    display:flex; 
+    justify-content:center; 
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10px;
+    float: left;
+}
+div.carousel-inner div.item{
+    overflow: auto;
+}
+.cover-container {
+    height: 390px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    box-shadow: 2px 2px 4px #bbb;
+    border-top-right-radius: 4px;
+    width: 185px;
+    height: 350px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+div.genre.col-lg-12.col-md-10{
+    margin: 0px;
+}
+
+div.genre.cover-container {
+    height: 240px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+div.genre.cover-container div.cover-item{
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    box-shadow: 2px 2px 4px #bbb;
+    border-top-right-radius: 4px;
+    width: 185px;
+    height: 200px;
+    vertical-align: bottom;
+    text-align: center;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("img\\genre.jpg");
+}
+
+div.genre.cover-container div.cover-item p{
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    margin:0%;
+    font-family: "Open Sans Regular",sans-serif;
+    color:#bdc1c3;
+    font-size: 36px;
+}
+
+div.cartButton{
+    display:flex; 
+    justify-content:center; 
+    margin-top: 5px;
+}
+
+div.cartButton button{
+    color:#234455;
+    background-color: #a6a1a1;
+}
+div.detailContainer{
+    margin-top: 5px;
+}
+div.detailContainer div span{
+    color: #bdc1c3;
+    font-weight: bold;
+}
+h1{
+    font-family: "Open Sans Regular",sans-serif;
+    color:#bdc1c3;
+}
+input[type="number"], textarea {
+    background-color : #ddd6d6; 
+    color: black;
+}
+div.movieDetails{
+    color:#d0d3d4;
+    font-weight: bold;
+    margin-right: 120px;
+}
+div.movieDetails p{
+    color:#3f9dbd;
+    font-weight: initial;
+}
+div.description-container img{
+    width: 441px;
+    height: 520px;
+    display:flex; 
+    justify-content:center; 
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10px;
+    float: left;
+}
+div.description-container div.description-item{
+    overflow: auto;
+}
+div.descDetailContainer{
+    margin-top: 25px;
+    text-align: center;
+}
+
+div.descDetailContainer span{
+    color: gray;
+}
+
+div.descDetailContainer button{
+    color: black;
+    background-color: darkgrey;
+}
