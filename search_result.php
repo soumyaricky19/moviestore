@@ -16,9 +16,9 @@
             <div class='container-fluid'>
                 <ul class='nav navbar-nav'>
                     <li class='active'><a href='home.html'>Home</a></li> 
-                    <li><a href='/checkin' style='height: 10px'>Login</a></li>
-                    <li><a href='/borrower' style='height: 10px'>Sign Up</a></li>
-                    <li><a href='cart.html' style='height: 10px'>Cart</a></li>
+                    <li><a href="">Login</a></li>
+                    <li><a href='signup.html'>Sign Up</a></li>
+                    <li><a href='cart.html'>Cart</a></li>    
                 </ul>
                 <form method = 'GET' action = 'search_result.php' class='navbar-form navbar-right'>
                 <div class='form-group'>
