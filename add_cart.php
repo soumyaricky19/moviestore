@@ -30,18 +30,20 @@
     {
         $err_message=$requested_quantity." quantity not available. Available=".$movie_quantity;
     }
-    if ($cart_quantity == 0)
-    {
-       $query="insert into cart values ('".$user_id."',".$movie_id.",".$requested_quantity.")";  
-        if (!mysqli_query($conn, $query)) {
-                $err_message="insert error";
-        }    
-    }
-    else
-    {    
-        $query="update cart set quantity=".$requested_quantity." where user_id='".$user_id."' and movie_id=".$movie_id;
-        if (!mysqli_query($conn, $query)) {
-            $err_message="update error";
+    else{
+        if ($cart_quantity == 0)
+        {
+        $query="insert into cart values ('".$user_id."',".$movie_id.",".$requested_quantity.")";  
+            if (!mysqli_query($conn, $query)) {
+                    $err_message="insert error";
+            }    
+        }
+        else
+        {    
+            $query="update cart set quantity=".$requested_quantity." where user_id='".$user_id."' and movie_id=".$movie_id;
+            if (!mysqli_query($conn, $query)) {
+                $err_message="update error";
+            }
         }
     }
     //echo $query;
