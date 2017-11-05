@@ -54,7 +54,7 @@
         }
         while ($order_id_ok == 0);
 
-        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",'".$order_id."',0)"; 
+        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",'".$order_id."', CURRENT_TIMESTAMP, 0)"; 
         if (!mysqli_query($conn, $purchases_query)) {
                 $message="insert error";
                 echo $message;

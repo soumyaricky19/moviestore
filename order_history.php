@@ -15,10 +15,11 @@
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
             <div class='container-fluid'>
                 <ul class='nav navbar-nav'>
-                    <li class='active'><a href='home.html'>Home</a></li> 
+                    <li><a href='home.html'>Home</a></li> 
                     <li><a href="">Login</a></li>
                     <li><a href='signup.html'>Sign Up</a></li>
-                    <li><a href='cart.html'>Cart</a></li>    
+                    <li><a href='cart.php'>Cart</a></li>
+                    <li class='active'><a href='order_history.php'>Orders</a></li>   
                 </ul>
                 <form method = 'GET' action = 'search_result.php' class='navbar-form navbar-right'>
                 <div class='form-group'>
@@ -57,7 +58,7 @@
                     }
                     $purchases_query="select * from purchases where user_id='".$user_id."'";
                     $purchases_result=mysqli_query($conn, $purchases_query);
-                    $table="<table><tr><th>Title</th><th>Quantity</th><th>Order_id</th><th>Time</th></tr>";
+                    $table="<table><tr><th>Title</th><th>Quantity</th><th>Order_id</th><th>Date/Time</th></tr>";
                     while ($purchases_row = mysqli_fetch_array($purchases_result))
                     {
                         $movie_id=$purchases_row["movie_id"];

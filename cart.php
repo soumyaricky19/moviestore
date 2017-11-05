@@ -48,10 +48,11 @@
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
             <div class='container-fluid'>
                 <ul class='nav navbar-nav'>
-                    <li ><a href='home.html'>Home</a></li> 
-                    <li><a href='/checkin' style='height: 10px'>Login</a></li>
-                    <li><a href='/borrower' style='height: 10px'>Sign Up</a></li>
-                    <li class='active'><a href='cart.html' style='height: 10px'>Cart</a></li>
+                    <li><a href='home.html'>Home</a></li> 
+                    <li><a href="">Login</a></li>
+                    <li><a href='signup.html'>Sign Up</a></li>
+                    <li class='active'><a href='cart.php'>Cart</a></li>
+                    <li><a href='order_history.php'>Orders</a></li>
                 </ul>
                 <form method = 'GET' action = 'search_result.php' class='navbar-form navbar-right'>
                 <div class='form-group'>
