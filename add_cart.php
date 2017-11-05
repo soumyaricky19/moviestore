@@ -1,9 +1,9 @@
  <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) { 
-        header('Location: home.html');
-        exit();
-    }
+    // if(!isset($_SESSION["user_id"])) { 
+    //     header('Location: home.html');
+    //     exit();
+    // }
     $user_id = $_SESSION["user_id"];
     //$user_id = "soumya";
     $movie_id = $_POST["movie_id"];
@@ -29,6 +29,7 @@
     $movie_row = mysqli_fetch_array($movie_result);
     $movie_quantity=$movie_row["quantity"];
     $movie_title=$movie_row["title"];
+    $movie_price=$movie_row["price"];
     if ($movie_quantity < $requested_quantity)
     {
         $message=$requested_quantity.' quantity of "'.$movie_title.'" not available. Available quantity='.$movie_quantity;
@@ -36,18 +37,17 @@
         return;
     }
     else{
-        if ($cart_quantity == 0)
-        {
-        $query="insert into cart values ('".$user_id."',".$movie_id.",".$requested_quantity.")";  
+        $updated_price=$requested_quantity*$movie_price;
+        if ($cart_quantity == 0) {
+        $query="insert into cart values ('".$user_id."',".$movie_id.",".$requested_quantity.",".$updated_price.")";  
             if (!mysqli_query($conn, $query)) {
                     $message="insert error";
                     echo $message;
                     return;
             }    
         }
-        else
-        {    
-            $query="update cart set quantity=".$requested_quantity." where user_id='".$user_id."' and movie_id=".$movie_id;
+        else {    
+            $query="update cart set quantity=".$requested_quantity.",price=".$updated_price." where user_id='".$user_id."' and movie_id=".$movie_id;
             if (!mysqli_query($conn, $query)) {
                 $message="update error";
                 echo $message;

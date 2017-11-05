@@ -1,9 +1,9 @@
  <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) { 
-        header('Location: home.html');
-        exit();
-    }
+    // if(!isset($_SESSION["user_id"])) { 
+    //     header('Location: home.html');
+    //     exit();
+    // }
     $user_id = $_SESSION["user_id"];
     // $user_id ="soumyaricky19";
     $servername = "localhost";

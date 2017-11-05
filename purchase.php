@@ -1,9 +1,9 @@
  <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) { 
-        header('Location: home.html');
-        exit();
-    }
+    // if(!isset($_SESSION["user_id"])) { 
+    //     header('Location: home.html');
+    //     exit();
+    // }
     $user_id = $_SESSION["user_id"];
     // $user_id = "soumyaricky19";
     if ($user_id == "guest")
@@ -34,7 +34,8 @@
         $movie_result=mysqli_query($conn, $movie_query);
         $movie_row = mysqli_fetch_array($movie_result);
         $movie_quantity=$movie_row["quantity"];
-        $movie_title=$movie_row["title"];
+        $movie_price=$movie_row["price"];
+        $movie_title=$movie_row["title"]; 
         if ($movie_quantity < $cart_quantity)
         {
             $message=$cart_quantity.' quantity of "'.$movie_title.'" not available. Available quantity='.$movie_quantity;
@@ -53,16 +54,23 @@
             }  
         }
         while ($order_id_ok == 0);
-
-        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",'".$order_id."', CURRENT_TIMESTAMP, 0)"; 
+        $updated_price=$cart_quantity*$movie_price;
+        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",".$updated_price.",'".$order_id."', CURRENT_TIMESTAMP, 0)"; 
         if (!mysqli_query($conn, $purchases_query)) {
-                $message="insert error";
+                $message="purchase insert error";
                 echo $message;
                 return;
         }
-        $cart_delete_query="delete from cart where user_id='".$user_id."'"; 
+        $cart_delete_query="delete from cart where user_id='".$user_id."' and movie_id=".$cart_movie_id; 
         if (!mysqli_query($conn, $cart_delete_query)) {
-                $message="delete error";
+                $message="cart delete error";
+                echo $message;
+                return;
+        }
+        $updated_quantity=$movie_quantity-$cart_quantity;
+        $movie_update_query="update movie set quantity=".$updated_quantity." where movie_id=".$cart_movie_id;
+        if (!mysqli_query($conn, $movie_update_query)) {
+                $message="update movie error";
                 echo $message;
                 return;
         }

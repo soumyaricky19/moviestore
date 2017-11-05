@@ -15,9 +15,9 @@
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
             <div class='container-fluid'>
                 <ul class='nav navbar-nav'>
-                    <li class='active'><a href='home.html'>Home</a></li> 
+                    <li class='active'><a href='home.php'>Home</a></li> 
                     <li><a href="">Login</a></li>
-                    <li><a href='signup.html'>Sign Up</a></li>
+                    <li><a href='signup_page.php'>Sign Up</a></li>
                     <li><a href='cart.php'>Cart (<?php require ('num_cart.php');?> ) </a></li>
                     <li><a href='order_history.php'>Orders</a></li>
                 </ul>
@@ -34,11 +34,11 @@
             <div class='description-item'>
                 <?php
                     session_start();
-                    if(!isset($_SESSION["user_id"])) { 
-                        header('Location: home.html');
-                        exit();
-                    }
-                    $user_id = $_SESSION["user_id"];
+                    // if(!isset($_SESSION["user_id"])) { 
+                    //     header('Location: home.html');
+                    //     exit();
+                    // }
+                    // $user_id = $_SESSION["user_id"];
                     
                     $movie_id = $_GET["id"];
                     $servername = "localhost";
@@ -75,7 +75,7 @@
                 
                     $poster =  preg_replace('/185/','500',$row['imageUrl']);  
                     $img = "<img src='" .$poster. "' alt='Image not found' title='".$row['title']."' />";
-                    $img = $img."<div class='movieDetails'>Movie: <p>".$row['title']."</p>Description: <p>".$row['description']."</p>Director: <p>".$row['director']."</p>Cast: <p>".$casts."</p>Year: <p>".$row['year']."</p>Duration: <p>".$row['duration']." minutes</p>Rating: <p>".$row['rating']."</p>Votes: <p>".$row['votes']."</p>Available Quantity: <p>".$quantity."</p>Price: <p>".$row['price']."</p></div>";
+                    $img = $img."<div class='movieDetails'>Movie: <p>".$row['title']."</p>Description: <p>".$row['description']."</p>Director: <p>".$row['director']."</p>Cast: <p>".$casts."</p>Year: <p>".$row['year']."</p>Duration: <p>".$row['duration']." minutes</p>Rating: <p>".$row['rating']."</p>Votes: <p>".$row['votes']."</p>Available Quantity: <p>".$quantity."</p>Price: <p>$".$row['price']."</p></div>";
                     
                     $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
                     $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";

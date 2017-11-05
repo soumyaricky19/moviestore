@@ -1,9 +1,9 @@
 <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) { 
-        header('Location: home.html');
-        exit();
-    }
+    // if(!isset($_SESSION["user_id"])) { 
+    //     header('Location: home.html');
+    //     exit();
+    // }
     $user_id = $_SESSION["user_id"];
     $movie_id = $_POST["movie_id"];
     $quantity = $_POST["quantity"];
@@ -22,25 +22,35 @@
     }
 
     if($op == "update"){
-        $query="update cart set quantity=".$quantity." where user_id='".$user_id."' and movie_id=".$movie_id;
-        $result = mysqli_query($conn,$query);
-        if (!mysqli_query($conn, $query)) {
-            $err_message="update error";
+        $movie_query="select * from movie where is_available=1 and movie_id=".$movie_id;
+        $movie_result=mysqli_query($conn, $movie_query);
+        $movie_row = mysqli_fetch_array($movie_result);
+        $movie_quantity=$movie_row["quantity"];
+        $movie_price=$movie_row["price"];
+        if ($movie_quantity < $quantity)
+        {
+            $message=$quantity.' quantity of "'.$movie_title.'" not available. Available quantity='.$movie_quantity;
+            echo $message;
+            return;
+        }
+        $updated_price=$movie_price*$quantity;
+        $cart_query="update cart set quantity=".$quantity.",price=".$updated_price." where user_id='".$user_id."' and movie_id=".$movie_id;
+        if (!mysqli_query($conn, $cart_query)) {
+            $message="update error";
+            echo $message;
+            return;
         }    
     } 
     else {
         $query="delete from cart where user_id='".$user_id."' and movie_id=".$movie_id;
-        $result = mysqli_query($conn,$query);
         if (!mysqli_query($conn, $query)) {
-            $err_message="delete error";
+            $message="delete error";
+            echo $message;
+            return;
         }
     }
+ 
+    $message = "Cart Updated";
+    echo $message;
     
-	if ($err_message == ""){
-        $message = "Cart Updated";
-        echo $message;
-    }
-    else{
-        echo $err_message;
-    }
 ?>

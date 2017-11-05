@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $_SESSION["user_id"] = "soumyaricky19";
+?>
 <!DOCTYPE html>
 <html>  
   <head>
@@ -17,15 +21,15 @@
       <nav class='navbar navbar-inverse'>
           <div class='container-fluid'>
             <ul class='nav navbar-nav'>
-                <li class='active'><a href='home.html'>Home</a></li> 
+                <li class='active'><a href='home.php'>Home</a></li> 
                 <li><a href="">Login</a></li>
-                <li><a href='signup.html'>Sign Up</a></li>
-                <li><a href='cart.php'>Cart</a></li>
+                <li><a href='signup_page.php'>Sign Up</a></li>
+                <li><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li>
                 <li><a href='order_history.php'>Orders</a></li>
             </ul>
             <form method = 'GET' class='navbar-form navbar-right' action='search_result.php'>
               <div class='form-group'>
-                <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40'/>&nbsp; &nbsp;
+                <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40' required/>&nbsp; &nbsp;
                 <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
               </div>
             </form>

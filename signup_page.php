@@ -22,10 +22,11 @@
   <nav class='navbar navbar-inverse'>
     <div class='container-fluid'>
       <ul class='nav navbar-nav'>
-          <li class='active'><a href='home.html'>Home</a></li> 
-          <li><a href="#modal-wrapper" name="login" id="login" data-toggle="modal">Login</a></li>
-          <li><a href='signup.html'>Sign Up</a></li>
-          <li><a href='cart.html'>Cart</a></li>
+          <li><a href='home.php'>Home</a></li> 
+          <li><a href="">Login</a></li>
+          <li class='active'><a href='signup_page.php'>Sign Up</a></li>
+          <li><a href='cart.php'>Cart (<?php require ('num_cart.php');?> ) </a></li>
+          <li><a href='order_history.php'>Orders</a></li>
       </ul>
       <form method = 'GET' class='navbar-form navbar-right' action='search_result.php'>
         <div class='form-group'>
