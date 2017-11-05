@@ -56,7 +56,7 @@
                         header('Location: home.html');
                         exit();
                     }
-                    $purchases_query="select * from purchases where user_id='".$user_id."'";
+                    $purchases_query="select * from purchases where user_id='".$user_id."' order by time desc";
                     $purchases_result=mysqli_query($conn, $purchases_query);
                     $table="<table><tr><th>Title</th><th>Quantity</th><th>Order_id</th><th>Date/Time</th></tr>";
                     while ($purchases_row = mysqli_fetch_array($purchases_result))
