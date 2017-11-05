@@ -5,6 +5,7 @@
         exit();
     }
     $user_id = $_SESSION["user_id"];
+    // $user_id = "soumyaricky19";
     if ($user_id == "guest")
     {
         $message="Please login";
@@ -41,21 +42,27 @@
             return;
         }
         
-        $shipping_id_ok=0;
+        $order_id_ok=0;
         do{
-            $shipping_id=rand(1, 99999999);
-            $shipping_query="select * from purchases where shipping_id=".$shipping_id;
-            $shipping_result=mysqli_query($conn, $shipping_query);
-            $shipping_row = mysqli_fetch_array($shipping_result);
-            if ($shipping_row == ""){
-                $shipping_id_ok=1;
+            $order_id=rand(1, 99999999);
+            $order_query="select * from purchases where user_id='".$user_id."' and movie_id=".$cart_movie_id."and order_id=".$order_id;
+            $order_result=mysqli_query($conn, $order_query);
+            $order_row = mysqli_fetch_array($order_result);
+            if ($order_row == ""){
+                $order_id_ok=1;
             }  
         }
-        while ($shipping_id_ok == 0);
+        while ($order_id_ok == 0);
 
-        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",'".$shipping_id."',0)"; 
+        $purchases_query="insert into purchases values ('".$user_id."',".$cart_movie_id.",".$cart_quantity.",'".$order_id."',0)"; 
         if (!mysqli_query($conn, $purchases_query)) {
                 $message="insert error";
+                echo $message;
+                return;
+        }
+        $cart_delete_query="delete from cart where user_id='".$user_id."'"; 
+        if (!mysqli_query($conn, $cart_delete_query)) {
+                $message="delete error";
                 echo $message;
                 return;
         }
