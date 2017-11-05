@@ -57,14 +57,14 @@
                     }
                     $purchases_query="select * from purchases where user_id='".$user_id."'";
                     $purchases_result=mysqli_query($conn, $purchases_query);
-                    $table="<table><tr><th>Title</th><th>Quantity</th><th>Order_id</th></tr>";
+                    $table="<table><tr><th>Title</th><th>Quantity</th><th>Order_id</th><th>Time</th></tr>";
                     while ($purchases_row = mysqli_fetch_array($purchases_result))
                     {
                         $movie_id=$purchases_row["movie_id"];
                         $movie_query="select * from movie where movie_id=".$movie_id;
                         $movie_result=mysqli_query($conn, $movie_query);
                         $movie_row = mysqli_fetch_array($movie_result);
-                        $table=$table."<tr><td>".$movie_row["title"]."</td><td>".$purchases_row["quantity"]."</td><td>".$purchases_row["order_id"]."</td></tr>";
+                        $table=$table."<tr><td>".$movie_row["title"]."</td><td>".$purchases_row["quantity"]."</td><td>".$purchases_row["order_id"]."</td><td>".$purchases_row["time"]."</td></tr>";
                     }
                     $table=$table."</table>";
                     echo $table;
