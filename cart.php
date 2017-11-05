@@ -21,7 +21,6 @@
         //echo $row['quantity']." ".$row['movie_id'];
         $movie = mysqli_query($conn, "select * from movie where movie_id='".$row['movie_id']."';");
         $moviename = mysqli_fetch_array($movie);
-        //echo $moviename['title'];        
         $data = $data."<tr><td>".$moviename['title']."</td><td><div class='center'><div class='input-group'><span class='input-group-btn'>";
         $data = $data."<button type='button' class='btn btn-default btn-number' id='btn".$row['movie_id']."' data-type='minus' data-field='quant[1]'><span class='glyphicon glyphicon-minus'></span></button></span>";
         $data = $data."<input type='text' id='inp".$row['movie_id']."' name='quant[1]' class='form-control input-number' value='".$row['quantity']."' min='1' max='".$moviename['quantity']."'>";
@@ -67,7 +66,6 @@
                 <?php echo $data ?>
             </table>
         </div>
-  
   </body>
 </html>
 
