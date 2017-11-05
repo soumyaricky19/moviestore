@@ -28,9 +28,10 @@
     $movie_result=mysqli_query($conn, $movie_query);
     $movie_row = mysqli_fetch_array($movie_result);
     $movie_quantity=$movie_row["quantity"];
+    $movie_title=$movie_row["title"];
     if ($movie_quantity < $requested_quantity)
     {
-        $message=$requested_quantity." quantity not available. Available=".$movie_quantity;
+        $message=$requested_quantity.' quantity of "'.$movie_title.'" not available. Available quantity='.$movie_quantity;
         echo $message;
         return;
     }
