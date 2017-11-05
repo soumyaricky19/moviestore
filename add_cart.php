@@ -1,8 +1,10 @@
  <?php
     session_start();
-    if(isset($_SESSION["user_id"])) {
-        $user_id = $_SESSION["user_id"];
+    if(!isset($_SESSION["user_id"])) { 
+        header('Location: home.html');
+        exit();
     }
+    $user_id = $_SESSION["user_id"];
     //$user_id = "soumya";
     $movie_id = $_POST["movie_id"];
     $quantity = $_POST["quantity"];
