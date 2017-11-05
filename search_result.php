@@ -51,7 +51,8 @@
                     if (!$conn) {
                         die("Connection failed: " . mysqli_connect_error());
                     }
-                    if ($search_text != "" || $genre == "")
+                    if ($search_text != "" || $genre_id == "")
+                    {
                         $tokens=tokenize($search_text);
                         
                         foreach($tokens as $token) {
@@ -69,6 +70,7 @@
                         }
                         // echo $query;
                         $query=$query."select * from movie where 0=1";
+                    }
                     else
                     {
                         $query="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
