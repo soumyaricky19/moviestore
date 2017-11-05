@@ -18,7 +18,7 @@
                     <li><a href='home.html'>Home</a></li> 
                     <li><a href="">Login</a></li>
                     <li><a href='signup.html'>Sign Up</a></li>
-                    <li><a href='cart.php'>Cart</a></li>
+                    <li><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li>
                     <li class='active'><a href='order_history.php'>Orders</a></li>   
                 </ul>
                 <form method = 'GET' action = 'search_result.php' class='navbar-form navbar-right'>
