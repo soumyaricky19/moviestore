@@ -82,7 +82,7 @@
                     {
                         $query="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
                     }
-                    echo $query;
+                    // echo $query;
                     display($conn,$query);
                     
                     function display($conn,$query) {
