@@ -143,3 +143,15 @@ div.descDetailContainer button{
     color: black;
     background-color: darkgrey;
 }
+
+div.order.col-lg-12.col-md-10{
+    /* color: white;
+    background-color: gray; */
+}
+table.table.table-bordered thead{
+    color: #d0d3d4;
+}
+
+table.table.table-bordered td{
+    color: #3f9dbd;
+}

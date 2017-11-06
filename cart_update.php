@@ -30,14 +30,16 @@
         if ($movie_quantity < $quantity)
         {
             $message=$quantity.' quantity of "'.$movie_title.'" not available. Available quantity='.$movie_quantity;
-            echo $message;
+            //echo $message;
+            echo json_encode(array("message" => $message));          
             return;
         }
         $updated_price=$movie_price*$quantity;
         $cart_query="update cart set quantity=".$quantity.",price=".$updated_price." where user_id='".$user_id."' and movie_id=".$movie_id;
         if (!mysqli_query($conn, $cart_query)) {
             $message="update error";
-            echo $message;
+            //echo $message;
+            echo json_encode(array("message" => $message));     
             return;
         }    
     } 
@@ -45,12 +47,13 @@
         $query="delete from cart where user_id='".$user_id."' and movie_id=".$movie_id;
         if (!mysqli_query($conn, $query)) {
             $message="delete error";
-            echo $message;
+            //echo $message;
+            echo json_encode(array("message" => $message));         
             return;
         }
     }
  
     $message = "Cart Updated";
-    echo $message;
+    echo json_encode(array("message" => $message, "price" => $updated_price));
     
 ?>

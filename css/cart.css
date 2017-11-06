@@ -5,3 +5,9 @@
 .table {
     table-layout: auto;
 }
+.total {
+    font-weight: bold;
+}
+div#totalQty.total{
+    text-align: center;
+}
