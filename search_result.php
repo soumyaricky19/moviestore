@@ -61,7 +61,8 @@
                     else if ($search_text != "" || $genre_id == "")
                     {
                         $tokens=tokenize($search_text);
-                        foreach($tokens as $token) {
+                        foreach($tokens as $tok) {
+                            $token=strtolower($tok);
                             if (!in_array($token,$stop_list))
                             {
                                 //Title search 
@@ -81,6 +82,7 @@
                     {
                         $query="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
                     }
+                    echo $query;
                     display($conn,$query);
                     
                     function display($conn,$query) {
@@ -89,12 +91,13 @@
                         while ($row = mysqli_fetch_array($result)){
                             //$list=$list."<li>".$row["title"]."</li>"; 
                             $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";
-                            $img = $img."<div class='detailContainer'><div><span>Price: $".$row['price']." &nbsp;&nbsp;&nbsp;Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='10'></span></div>";
+                            $img = $img."<div class='detailContainer'><div><span>Price: $".$row['price']." &nbsp;&nbsp;&nbsp;Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$row['quantity']."'></span></div>";
                             $img = $img."<div class='cartButton'><button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div></div>";
                             $list=$list."<div class='cover-item'>".$img."</div>";
                         }
                         //$list=$list."</ul>";
                         echo $list;
+                        // echo $query;
                     }
                     // function tokenize($search_text)
                     function tokenize($search_text)
