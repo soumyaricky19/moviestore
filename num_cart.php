@@ -20,7 +20,12 @@
     $cart_query="select sum(quantity) count from cart where user_id='".$user_id."'";
     $cart_result=mysqli_query($conn, $cart_query);
     $cart_row = mysqli_fetch_array($cart_result);
-    $count=$cart_row["count"];
+    $count=0;
+    if ($cart_row["count"] > 0)
+    {
+        $count=$cart_row["count"];         
+    }
+    
     // $count=0;
     // while ($cart_row = mysqli_fetch_array($cart_result))
     // {     
