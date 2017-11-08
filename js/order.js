@@ -25,6 +25,9 @@ $(document).ready(function() {
         table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
       }
       table = table + "</tbody></table>";
+      if(i == orderLength){
+        $("#nxtBtn").prop('disabled',true);
+      }
       $("#prBtn").prop('disabled',true);  
       setTimeout(function(){ 
         // Load new content
@@ -51,6 +54,9 @@ $(document).ready(function() {
         break;
       }
       table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
+    }
+    if(i == orderLength){
+      $("#nxtBtn").prop('disabled',true);
     }
     table = table + "</tbody></table>";  
     setTimeout(function(){ 

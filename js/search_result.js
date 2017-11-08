@@ -37,6 +37,9 @@ $(document).ready(function(){
                 content = content + movieResults[i];          
             }
             $("#prBtn").prop('disabled',true);       
+            if(i == totalMovies){
+                $("#nxtBtn").prop('disabled',true);
+            }
 
             setTimeout(function(){ 
                 // Load new content
@@ -65,7 +68,9 @@ $(document).ready(function(){
           }
           content = content + movieResults[i];
         }
-        
+        if(i == totalMovies){
+            $("#nxtBtn").prop('disabled',true);
+        }
         setTimeout(function(){ 
             // Load new content
             $('#searchResults').html(content);     
