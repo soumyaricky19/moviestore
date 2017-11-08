@@ -7,6 +7,7 @@ $(document).ready(function() {
     url: 'fetch_order_data.php',
     type: 'GET',
     beforeSend: function() {
+      $('div.orderbutton').hide();
       $('div.orderContainer').addClass('loader');
     },
     success:function(data){
@@ -27,7 +28,8 @@ $(document).ready(function() {
       setTimeout(function(){ 
         // Load new content
         $('div.orderContainer').removeClass('loader');
-        $("div.orderContainer").html(table);     
+        $("div.orderContainer").html(table); 
+        $('div.orderbutton').show();    
         // Fade in
         project.style.opacity = 1;
       },500);
