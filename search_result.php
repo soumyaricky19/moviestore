@@ -7,9 +7,11 @@
         <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/searchPage.css" rel="stylesheet">
         <script src="js/recent.js"></script>
         <script src="js/popular.js"></script> 
         <script src="js/add_cart.js"></script>
+        <script src="js/search_result.js"></script>
     </head>
     <body> 
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
@@ -32,8 +34,11 @@
         <br/>
         <div class="searchResults col-lg-12 col-md-10">
             <h1>Search Results</h1> 
-            <div id="searchResults" class="searchResults cover-container">    
-                
+            <div id="searchResults" class="searchResults cover-container">
+            </div>
+            <div class="orderbutton">
+                <button id= 'prBtn' type = 'button' class='btn btn-primary' value='0'>Previous</button>
+                <button id= 'nxtBtn' type = 'button' class='btn btn-primary' value='0'>Next</button>
             </div>
         </div>
 

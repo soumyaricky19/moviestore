@@ -13,6 +13,10 @@
     $username = "root";
     $password = "root";
     $db = "onlinemoviestore";
+
+    // Global List to store all the search results
+    $totalSearchResults = array();
+    
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $db);
     // Check connection
@@ -26,10 +30,12 @@
     $query_director="((select * from movie where is_available=1 and director ";
     $query_actor="select * from movie where is_available=1 and movie_id in (select movie_id from movie_actor where actor_id in (select actor_id from actors where actor_name ";
 
+    // Empty Search
     if ($search_text == " ") {
         echo "<script> alert('Please enter some string to search')</script>";
         return;
-    }                        
+    }   
+    // Movie Search                     
     else if ($search_text != "" || $genre_id == "")
     {
         $tokens=tokenize($search_text);
@@ -73,27 +79,34 @@
             }
         }
     }
+    // Genre Based Search
     else if ($search_text == "" || $genre_id != "")
     {
         $query_genre="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
         $display_output=$display_output.form_output($conn,$query_genre);
     }
-    echo $display_output;
+    //echo json_encode($display_output);
+    echo json_encode($totalSearchResults);
 
     function form_output($conn,$query) {
         $result = mysqli_query($conn,$query);
         $list="";
-        global $movie_list;
+        global $movie_list, $totalSearchResults;
+
         while ($row = mysqli_fetch_array($result)){
             if (!in_array($row['movie_id'], $movie_list)) {
                 array_push($movie_list,$row['movie_id']);
                 $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";
                 $img = $img."<div class='detailContainer'><div><span>Price: $".$row['price']." &nbsp;&nbsp;&nbsp;Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$row['quantity']."'></span></div>";
                 $img = $img."<div class='cartButton'><button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div></div>";
-                $list=$list."<div class='cover-item'>".$img."</div>";
+                //$list=$list."<div class='cover-item'>".$img."</div>";
+                $list="<div class='cover-item'>".$img."</div>";
+                
+                array_push($totalSearchResults,$list);
             }
         }
-        return $list;
+        //return $list;
+        //return $totalSearchResults;
     }
     function form_query($query,$search_token) {
         return $query." like '%".$search_token."%'))";

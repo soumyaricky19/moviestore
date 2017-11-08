@@ -15,16 +15,17 @@ $(document).ready(function() {
       project.style.opacity = 0;  
       orders = JSON.parse(data);
       orderLength = orders.length;
-      if(orders.length < 3){
-        count = orderLength;
-      } else {
-        count = 3;
-      }
+      
       var table = "<table class='table table-bordered'><thead><tr><th>Title</th><th>Quantity</th><th>Price</th><th>Order_id</th><th>Date/Time</th></tr></thead><tbody>";
-      for(i = 0; i < count; i++){
+      for(i = 0; i < 3; i++){
+        if(i == orderLength){
+          $("#nxtBtn").prop('disabled',true);
+          break;
+        }
         table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
       }
       table = table + "</tbody></table>";
+      $("#prBtn").prop('disabled',true);  
       setTimeout(function(){ 
         // Load new content
         $('div.orderContainer').removeClass('loader');

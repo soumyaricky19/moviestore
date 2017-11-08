@@ -79,9 +79,7 @@
                     
                     $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
                     $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";
-                    
-                    
-                    
+                        
                     echo $img;
                 ?>               
             </div>
