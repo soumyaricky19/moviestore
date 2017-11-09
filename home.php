@@ -15,6 +15,7 @@
     <script src="js/add_cart.js"></script>
     <script src="js/genre.js"></script> 
     <script src="js/carousel.js"></script>
+    <script src="js/admin.js"></script>
       
   </head>
   <body>  
@@ -35,7 +36,11 @@
             </form>
           </div>         
       </nav>
-    
+
+      <div id='addMovie' class='adminButton'>
+        <button id='addBtn' type ='button' class='btn btn-primary'>Add Movie</button>
+      </div>
+
       <div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->

@@ -1,0 +1,33 @@
+body{
+    height: 100%;
+    background-color: #dbe9f0;
+}
+
+table#movieInfo tbody tr td:nth-child(1){
+    width:5%;
+    font-weight: bold;
+}
+
+table#movieInfo tbody tr td:nth-child(2){
+    width: 10%;
+}
+div.detail{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+p{
+    color: black;
+    font-size:17px;
+}
+
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered , .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+    border: 1px solid #bcbcc7;
+}
+
+div.save{
+    padding-left: 40%;
+    margin-bottom: 20px;
+}
+button#saveBtn{
+    width: 150px;
+}

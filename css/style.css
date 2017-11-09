@@ -144,3 +144,18 @@ div.descDetailContainer button{
     background-color: darkgrey;
 }
 
+div.adminButton{
+    margin-top: 18px;
+    text-align: center;
+}
+
+div#myCarousel div.adminButton{
+    margin-top: 18px;
+    text-align: left;
+}
+
+div#addMovie.adminButton{
+    margin-top: 18px;
+    margin-right: 50px;
+    text-align: right; 
+}
