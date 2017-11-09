@@ -27,7 +27,6 @@ $(document).ready(function(){
             
             movieResults = JSON.parse(data)
             totalMovies = movieResults.length;
-            
             var content = "";
             for(i = 0; i < 6; i++){
                 if(i == totalMovies){
@@ -44,8 +43,12 @@ $(document).ready(function(){
             setTimeout(function(){ 
                 // Load new content
                 $('#searchResults').removeClass('loader');
-                $('#searchResults').html(content); 
-                $('div.orderbutton').show();    
+                if(totalMovies == 0){
+                    $('#searchResults').html("<div id='noResults'>No search results found.</div>");
+                } else {
+                    $('#searchResults').html(content); 
+                    $('div.orderbutton').show();        
+                }
                 // Fade in
                 searchContainer.style.opacity = 1;
             },500);

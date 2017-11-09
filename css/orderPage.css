@@ -44,3 +44,9 @@ div.orderContainer {
    -o-transition: opacity .5s ease-in-out;
    transition: opacity .5s ease-in-out;
 }
+div#noResults{
+    color: gray;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}

@@ -30,10 +30,14 @@ $(document).ready(function() {
       }
       $("#prBtn").prop('disabled',true);  
       setTimeout(function(){ 
-        // Load new content
         $('div.orderContainer').removeClass('loader');
-        $("div.orderContainer").html(table); 
-        $('div.orderbutton').show();    
+        // Load new content
+        if(orderLength == 0){
+          $('div.orderContainer').html("<div id='noResults'>You dont have any order history.</div>");
+        } else {
+          $("div.orderContainer").html(table); 
+          $('div.orderbutton').show();    
+        }
         // Fade in
         project.style.opacity = 1;
       },500);

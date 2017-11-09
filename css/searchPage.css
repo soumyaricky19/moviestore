@@ -49,3 +49,13 @@ div.searchResults.cover-container {
     margin-right: 0%;
     margin-left: 43%; 
 }
+
+div#noResults{
+    height: 390px;
+    color: gray;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 160px; 
+}
