@@ -24,6 +24,7 @@
         <script src="js/popular.js"></script> 
         <script src="js/add_cart.js"></script>
         <script src="js/order.js"></script>
+        <script src="js/admin.js"></script>
     </head>
     <body> 
         <?php require('nav_bar.php');?>

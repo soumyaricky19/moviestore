@@ -159,3 +159,7 @@ div#addMovie.adminButton{
     margin-right: 50px;
     text-align: right; 
 }
+/* Add a right margin to each icon */
+.fa {
+    margin-right: 8px;
+}

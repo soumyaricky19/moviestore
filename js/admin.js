@@ -1,5 +1,8 @@
 $(document).ready(function() 
 {
+
+	$("#deleteBtn891").append("<i class='fa fa-refresh fa-spin'></i>Deleting");
+
 	// Add a new movie to the database
 	$('#addBtn.btn-primary').click(function(e){
         window.location.href = "admin.php";
@@ -14,6 +17,11 @@ $(document).ready(function()
 			url: 'update_movie_admin.php',
 			type: 'POST',
 			data:  {movie_id: movieId, operation: "delete"},
+			beforeSend: function() {
+				alert("Before");
+				$("#"+btnId).text('');
+				$("#"+btnId).append("<i class='fa fa-refresh fa-spin'></i>Deleting");
+			},
 			success:function(data){
 				alert(data);
 				location.reload();												
