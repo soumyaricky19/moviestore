@@ -38,9 +38,18 @@ $(document).ready(function()
 									totalPrice += parseInt($(this).text().substring(1));
 								});
 								$("div#totalPrice.total").text("$"+totalPrice);	
+								var x ='';
+								$.ajax({
+								type: "POST",
+								url: "num_cart.php",
+								success: function(num) {
+									$("#cart").empty();
+									$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+								}
+								});	
 							} 
 							else {
-								alert("SQL Error. Reverting back the changes.");
+								alert("SQL Error-"+resp.message+" Reverting back the changes.");
 								input.val(currentVal).change();
 							}
 						},
@@ -79,9 +88,18 @@ $(document).ready(function()
 									totalPrice += parseInt($(this).text().substring(1));
 								});
 								$("div#totalPrice.total").text("$"+totalPrice);	
+								var x ='';
+								$.ajax({
+								type: "POST",
+								url: "num_cart.php",
+								success: function(num) {
+									$("#cart").empty();
+									$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+								}
+								});
 							} 
 							else {
-								alert("SQL Error. Reverting back the changes.");
+								alert("SQL Error-"+resp.message+" Reverting back the changes.");
 								input.val(currentVal).change();
 							}
 						},
@@ -137,9 +155,18 @@ $(document).ready(function()
 				//alert(resp.message);
 				if(resp.message == "Cart Updated"){	
 					location.reload();	
+					var x ='';
+					$.ajax({
+					type: "POST",
+					url: "num_cart.php",
+					success: function(num) {
+						$("#cart").empty();
+						$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+					}
+					});
 				} 
 				else {
-					alert("SQL Error. Reverting back the changes.");
+					alert("SQL Error-"+resp.message+" Reverting back the changes.");
 				}											
 			},
 			error:function(err){

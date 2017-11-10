@@ -5,7 +5,7 @@
         exit();
 	}
     $user_id = $_SESSION["user_id"];
-    // $user_id ="soumyaricky19";
+    $session_cart=$_SESSION["session_cart"];
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -21,10 +21,17 @@
     $cart_result=mysqli_query($conn, $cart_query);
     $cart_row = mysqli_fetch_array($cart_result);
     $count=0;
-    if ($cart_row["count"] > 0)
-    {
-        $count=$cart_row["count"];         
+    if ($user_id != "guest") {
+        if ($cart_row["count"] > 0)
+        {
+            $count=$cart_row["count"];         
+        }
     }
+    else
+    {
+        $count=count($session_cart);
+    }
+    
     
     // $count=0;
     // while ($cart_row = mysqli_fetch_array($cart_result))

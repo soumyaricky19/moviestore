@@ -10,15 +10,18 @@ $(document).ready(function(){
 		}
 		else{		
 			$.ajax({
-				url: 'add_cart.php',
+				url: 'cart_update.php',
 				type: 'POST',
 				data:  {movie_id: movieId, quantity: $(quantityId).val()},
 				success:function(data){
-					//alert("Movie id: "+movieId);
-					//alert("Quantity: " + $(quantityId).val());
-					//$("#"+this.id).text("Added");		
-					//$(quantityId).val("");
-					alert(data);	
+					var resp = JSON.parse(data);
+					if(resp.message == "Cart Updated"){
+						alert("Added to cart");	
+					}
+					else
+					{
+						alert(resp.message);
+					}
 					var x ='';
 					$.ajax({
 					type: "POST",
