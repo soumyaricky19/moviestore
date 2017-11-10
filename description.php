@@ -9,7 +9,8 @@
         <link href="css/style.css" rel="stylesheet">
         <script src="js/recent.js"></script>
         <script src="js/popular.js"></script> 
-        <script src="js/add_cart.js"></script> 
+        <script src="js/add_cart.js"></script>
+        <script src="js/admin.js"></script> 
     </head>
     <body>  
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
@@ -40,6 +41,7 @@
                     // }
                     // $user_id = $_SESSION["user_id"];
                     
+                    $_SESSION["user_id"] = "admin";
                     $movie_id = $_GET["id"];
                     $servername = "localhost";
                     $username = "root";
@@ -68,18 +70,18 @@
                     $quantity=$row["quantity"];
                     $info='<table><tr><td>Title: '.$row["title"].'</td></tr><tr><td>Description: '.$row["description"].'</td></tr><tr><td>Director: '.$row["director"].'</td></tr><tr><td>Year: '.$row["year"].'</td></tr><tr><td>Duration: '.$row["duration"].' mins</td></tr><tr><td> Rating: '.$row["rating"].'</td></tr><tr><td> Votes:'.$row["votes"].'</td></tr><tr><td>Available quantity: '.$quantity.'</td></tr><tr><td>Price:'.$row["price"].'</td></tr><tr><td>Cast: '.$casts.'</td></tr></table>';
 
-                    //echo $info;
-                    //echo '<input type = "hidden" id="m" value='.$movie_id.'>';
-                    //echo '<input type = "hidden" id="u" value='.$user_id.'>';
-                    //echo "<br/><button id='btn' type = 'submit' class='btn btn-primary' style = 'width: 150px'>Add to cart</button></div>";   
-                
                     $poster =  preg_replace('/185/','500',$row['imageUrl']);  
                     $img = "<img src='" .$poster. "' alt='Image not found' title='".$row['title']."' />";
                     $img = $img."<div class='movieDetails'>Movie: <p>".$row['title']."</p>Description: <p>".$row['description']."</p>Director: <p>".$row['director']."</p>Cast: <p>".$casts."</p>Year: <p>".$row['year']."</p>Duration: <p>".$row['duration']." minutes</p>Rating: <p>".$row['rating']."</p>Votes: <p>".$row['votes']."</p>Available Quantity: <p>".$quantity."</p>Price: <p>$".$row['price']."</p></div>";
                     
-                    $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
-                    $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";
-                        
+                    if($_SESSION["user_id"] == "admin"){
+                        $img = $img."<div class='adminButton'><button id='updateBtn".$row['movie_id']."' type ='button' class='btn btn-success'>Update</button>&nbsp;&nbsp;&nbsp;";
+                        $img = $img."<button id='deleteBtn".$row['movie_id']."' type ='button' class='btn btn-danger'>Delete</button></div>";
+                    } else{
+                        $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
+                        $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";                     
+                    }
+                    
                     echo $img;
                 ?>               
             </div>

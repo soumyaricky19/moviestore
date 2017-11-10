@@ -31,3 +31,10 @@ div.save{
 button#saveBtn{
     width: 150px;
 }
+button#fetchImage{
+    margin-top: 10px; 
+}
+/* Add a right margin to each icon */
+.fa {
+    margin-right: 8px;
+}

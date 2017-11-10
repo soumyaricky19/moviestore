@@ -51,7 +51,7 @@
         <div class="container detail">
             <h2>Hello <?php  echo $_SESSION['user_id']?>,</h2>
             <p>Please add the movie details below:</p>            
-            <form id="movieDetails" method="POST">
+            <form id="movieDetails" method="POST" onsubmit="return false">
                 <table id="movieInfo" class="table table-bordered">
                     <tbody>
                         <tr>
@@ -72,7 +72,7 @@
                         </tr>
                         <tr>
                             <td>Image Link</td>
-                            <td><input type="text" class="form-control" id="img" placeholder="Enter image link" value='<?php  echo $row['imageUrl']?>' required></td>
+                            <td><input type="text" class="form-control" id="img" placeholder="Enter image link" value='<?php  echo $row['imageUrl']?>' required>&nbsp;<button id="fetchImage" type = 'button' title="Please fill movie name to search images." class='btn btn-primary'>Fetch Image Url</button></td>
                         </tr>
                         <tr>
                             <td>Duration (Minutes)</td>

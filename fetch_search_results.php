@@ -1,6 +1,6 @@
 <?php
     session_start();
-    // $_SESSION["user_id"] = "soumyaricky19";  
+    $_SESSION["user_id"] = "admin";  
     // if(!isset($_SESSION["user_id"])) { 
     //     header('Location: home.html');
     //     exit();
@@ -96,12 +96,16 @@
         while ($row = mysqli_fetch_array($result)){
             if (!in_array($row['movie_id'], $movie_list)) {
                 array_push($movie_list,$row['movie_id']);
-                $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";
-                $img = $img."<div class='detailContainer'><div><span>Price: $".$row['price']." &nbsp;&nbsp;&nbsp;Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$row['quantity']."'></span></div>";
-                $img = $img."<div class='cartButton'><button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div></div>";
-                //$list=$list."<div class='cover-item'>".$img."</div>";
-                $list="<div class='cover-item'>".$img."</div>";
+                $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";     
                 
+                if($_SESSION["user_id"] == "admin"){
+                    $img = $img."<div class='adminButton'><button id='updateBtn".$row['movie_id']."' type ='button' class='btn btn-success'>Update</button>&nbsp;&nbsp;&nbsp;";
+                    $img = $img."<button id='deleteBtn".$row['movie_id']."' type ='button' class='btn btn-danger'>Delete</button></div>";
+                } else{
+                    $img = $img."<div class='detailContainer'><div><span>Price: $".$row['price']." &nbsp;&nbsp;&nbsp;Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$row['quantity']."' required></span></div>";
+                    $img = $img."<div class='cartButton'><button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div></div>";
+                }
+                $list="<div class='cover-item'>".$img."</div>";
                 array_push($totalSearchResults,$list);
             }
         }

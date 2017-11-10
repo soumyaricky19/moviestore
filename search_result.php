@@ -12,6 +12,7 @@
         <script src="js/popular.js"></script> 
         <script src="js/add_cart.js"></script>
         <script src="js/search_result.js"></script>
+        <script src="js/admin.js"></script>
     </head>
     <body> 
         <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
