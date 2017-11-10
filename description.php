@@ -12,7 +12,7 @@
         <script src="js/add_cart.js"></script>
         <script src="js/admin.js"></script> 
     </head>
-    <body>  
+    <body>
         <?php require('nav_bar.php');?>
         <br/> 
         <div class='description-container'>
