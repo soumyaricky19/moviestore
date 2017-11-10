@@ -7,7 +7,7 @@ $(document).ready(function() {
             data: {userid: $("#userid").val() ,password: $("#password").val()},
             success:function(data){
                 alert(data);
-                // window.location.href = "home.php";								
+                window.location.href = "home.php";								
             },
             error:function(err){
                 alert(err);

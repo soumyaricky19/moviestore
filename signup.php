@@ -31,7 +31,7 @@ $db = "onlinemoviestore";
                 echo "Ok";
               }
               else{
-                echo "Error";
+                echo "User name already exists";
               }
           } 
 
@@ -43,7 +43,7 @@ $db = "onlinemoviestore";
                   echo "Ok";
                 }
                 else{
-                  echo "Error";
+                  echo "Phone number already registered";
                 }
         }
       }

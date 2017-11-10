@@ -17,12 +17,11 @@
                     }
                 ?>
                 <li><form method = 'GET' class='navbar-form navbar-right' action='search_result.php'>
-                <div class='form-group'>
-                    <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40' required/>&nbsp; &nbsp;
-                    <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
-                </div>
-                </form>
-                </li>
+                    <div class='form-group'>
+                        <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40' required/>&nbsp; &nbsp;
+                        <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
+                    </div>
+                </form></li>
                 <?php 
                     session_start();
                     $user_id=$_SESSION["user_id"];
@@ -66,7 +65,5 @@
                 // });
             });
             </script>
-            
-            
           </div>         
       </nav>
