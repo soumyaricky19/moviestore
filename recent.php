@@ -1,10 +1,9 @@
 <?php
 	session_start();
-	$_SESSION["user_id"] = "admin";  
-	// if(!isset($_SESSION["user_id"])) { 
-	// 	header('Location: home.html');
-	// 	exit();
-	// }
+	if(!isset($_SESSION["user_id"])) {
+        header("location: home.php");
+        exit();
+	}
 
 	$servername = "localhost";
 	$username = "root";

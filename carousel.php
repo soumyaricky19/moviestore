@@ -1,11 +1,14 @@
 <?php
+	if(!isset($_SESSION["user_id"])) {
+        header("location: home.php");
+        exit();
+	}
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
 	$db = "onlinemoviestore";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $db);
-	$_SESSION["user_id"] = "admin";
 	// Check connection
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());

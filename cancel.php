@@ -1,20 +1,20 @@
  <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) { 
-        header('Location: home.html');
+    if(!isset($_SESSION["user_id"])) {
+        header("location: home.php");
         exit();
-    }
+	}
     $user_id = $_SESSION["user_id"];
     $movie_id= $POST["movie_id"];
     $order_id= $POST["order_id"];
     // $movie_id=3;
     // $order_id=2770997;
-    if ($user_id == "guest")
-    {
-        $message="Please login";
-        echo $message;
-        return;
-    }
+    // if ($user_id == "guest")
+    // {
+    //     $message="Please login";
+    //     echo $message;
+    //     return;
+    // }
 
     $servername = "localhost";
     $username = "root";

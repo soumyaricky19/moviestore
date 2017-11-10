@@ -1,6 +1,8 @@
 <?php
     session_start();
-    $_SESSION["user_id"] = "soumyaricky19";
+    if(!isset($_SESSION["user_id"])) {
+        $_SESSION["user_id"]="guest";
+	  }
 ?>
 <!DOCTYPE html>
 <html>  

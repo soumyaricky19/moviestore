@@ -1,11 +1,10 @@
- <?php
+<?php
     session_start();
     if(!isset($_SESSION["user_id"])) {
         header("location: home.php");
         exit();
 	}
     $user_id = $_SESSION["user_id"];
-    // $user_id ="soumyaricky19";
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -16,20 +15,20 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    
-    $cart_query="select sum(quantity) count from cart where user_id='".$user_id."'";
-    $cart_result=mysqli_query($conn, $cart_query);
-    $cart_row = mysqli_fetch_array($cart_result);
-    $count=0;
-    if ($cart_row["count"] > 0)
-    {
-        $count=$cart_row["count"];         
+
+    $userid=$_POST["userid"];
+    $password=$_POST["password"];
+
+    $query="select * from users where user_id='".$userid."'";
+    $result=mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    if ($password == $row["password"])
+    {   
+        $_SESSION["user_id"]=$userid;
+        echo ("Login successful");
     }
-    
-    // $count=0;
-    // while ($cart_row = mysqli_fetch_array($cart_result))
-    // {     
-    //     $count+=1;
-    // }
-    echo $count;
+    else
+    {
+        echo ("Incorrect username/password");
+    }
 ?>

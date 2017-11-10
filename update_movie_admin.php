@@ -1,9 +1,9 @@
 <?php
     session_start();
-    // if(!isset($_SESSION["user_id"])) { 
-    //     header('Location: home.html');
-    //     exit();
-    // }
+    if(!isset($_SESSION["user_id"])) {
+        header("location: home.php");
+        exit();
+	}
     $user_id = $_SESSION["user_id"];
     
     $op = $_POST["operation"];
