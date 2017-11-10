@@ -154,8 +154,12 @@ $(document).ready(function()
 			url: 'purchase.php',
 			type: 'POST',
 			success:function(data){
-				alert("Order Placed Successfully");
-				window.location.href = "order_history.php";											
+				alert(data);
+				if (data == " Order placed succesfully!") {
+					window.location.href = "order_history.php";
+				} else if (data == " Please login before continuing") {
+					window.location.href = "login_page.php";
+				}						
 			},
 			error:function(err){
 				alert(err);

@@ -4,6 +4,11 @@
         header("location: home.php");
         exit();
 	}
+    if ($user_id == "guest")
+    {
+        header("location: login_page.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>  
