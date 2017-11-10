@@ -7,10 +7,7 @@
                 <li id="cart"><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li>
                 <li id="orders"><a href='order_history.php'>Orders</a></li>
             </ul>
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-            <link href="css/style.css" rel="stylesheet">
-            <script>
-                
+            <script>  
                 $(document).ready(function(){
                     var url=window.location.href;
                     var arr = url.split('/');
