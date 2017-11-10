@@ -18,7 +18,16 @@ $(document).ready(function(){
 					//alert("Quantity: " + $(quantityId).val());
 					//$("#"+this.id).text("Added");		
 					//$(quantityId).val("");
-					alert(data);												
+					alert(data);	
+					var x ='';
+					$.ajax({
+					type: "POST",
+					url: "num_cart.php",
+					success: function(num) {
+						$("#num").empty();
+						$("#num").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+					}
+					});															
 				},
 				error:function(err){
 					alert(err);
