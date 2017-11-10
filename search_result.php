@@ -15,23 +15,7 @@
         <script src="js/admin.js"></script>
     </head>
     <body> 
-        <nav class='navbar navbar-inverse' style='background-color: rgba(10, 10, 10, 1); margin:0%;'>
-            <div class='container-fluid'>
-                <ul class='nav navbar-nav'>
-                    <li class='active'><a href='home.php'>Home</a></li> 
-                    <li><a href="">Login</a></li>
-                    <li><a href='signup_page.php'>Sign Up</a></li>
-                    <li><a href='cart.php'>Cart (<?php require ('num_cart.php');?> ) </a></li>
-                    <li><a href='order_history.php'>Orders</a></li>
-                </ul>
-                <form method = 'GET' action = 'search_result.php' class='navbar-form navbar-right'>
-                <div class='form-group'>
-                    <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40'/>&nbsp; &nbsp;
-                    <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
-                </div>
-                </form>
-            </div>         
-        </nav>
+        <?php require('nav_bar.php');?>
         <br/>
         <div class="searchResults col-lg-12 col-md-10">
             <h1>Search Results</h1> 

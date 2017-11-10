@@ -18,42 +18,25 @@
 </head>
 
 <body>
-<div class="container">
-  <nav class='navbar navbar-inverse'>
-    <div class='container-fluid'>
-      <ul class='nav navbar-nav'>
-          <li><a href='home.php'>Home</a></li> 
-          <li><a href="">Login</a></li>
-          <li class='active'><a href='signup_page.php'>Sign Up</a></li>
-          <li><a href='cart.php'>Cart (<?php require ('num_cart.php');?> ) </a></li>
-          <li><a href='order_history.php'>Orders</a></li>
-      </ul>
-      <form method = 'GET' class='navbar-form navbar-right' action='search_result.php'>
-        <div class='form-group'>
-          <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40'/>&nbsp; &nbsp;
-          <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
-        </div>
-      </form>
-    </div>         
-  </nav>
+  <?php require('nav_bar.php');?>
     
-<div id="modal-wrapper" class="modal">
-  
-  <form class="modal-content animate" action="login.php">
-        
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-      <h1 style="text-align:center">Modal Popup Box</h1>
-    </div>
+  <div id="modal-wrapper" class="modal">
+    
+    <form class="modal-content animate" action="login.php">
+          
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <h1 style="text-align:center">Modal Popup Box</h1>
+      </div>
 
-    <div class="container">
-      <input type="text" placeholder="Enter Username" name="uname">
-      <input type="password" placeholder="Enter Password" name="psw">        
-      <button type="submit">Login</button>
-    </div>
-    
-  </form>
-</div>
+      <div class="container">
+        <input type="text" placeholder="Enter Username" name="uname">
+        <input type="password" placeholder="Enter Password" name="psw">        
+        <button type="submit">Login</button>
+      </div>
+      
+    </form>
+  </div>
     <p>
     <h2>Create New Account</h2>
     <br/>
@@ -87,6 +70,5 @@
       </p>
          
     </form>
-</div>
 <body>
 </html>

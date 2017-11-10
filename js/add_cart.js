@@ -24,8 +24,8 @@ $(document).ready(function(){
 					type: "POST",
 					url: "num_cart.php",
 					success: function(num) {
-						$("#num").empty();
-						$("#num").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+						$("#cart").empty();
+						$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
 					}
 					});															
 				},
