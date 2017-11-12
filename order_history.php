@@ -4,7 +4,7 @@
         header("location: home.php");
         exit();
 	}
-    if ($user_id == "guest")
+    if ($_SESSION["user_id"] == "guest")
     {
         header("location: login_page.php");
         exit();
