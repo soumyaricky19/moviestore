@@ -32,7 +32,7 @@
                     else {
                         echo ("<li id='login'><a href='login_page.php'>Login</a></li><li id='signup'><a href='signup_page.php'>Sign Up</a></li>");
                     }
-                    echo ("<li><h3><a> Welcome " .$user_id."</a></h3></li>");
+                    echo ("<li><h3><a href='signup_page.php'> Welcome " .$user_id."</a></h3></li>");
                 ?>
                 <li id='cart'><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li>
             </ul>

@@ -15,16 +15,22 @@ $db = "onlinemoviestore";
         }
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            echo $_POST["card_info"];
-
             $userid = $_POST["userid"];
             $phonenumber = $_POST["phonenumber"];
             $address = $_POST["address"];
             $password = $_POST["password"];
             $card_info = $_POST["card_info"];
             $name = $_POST["name"];
-            echo $card_info;
-            $sql = "INSERT INTO users VALUES ('$userid', '$name', '$password', '$address', '$card_info', '$phonenumber', '1')";
+            $sql="";
+            if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != "guest") {
+                $sql = "update users set name='".$name."', password='".$password."', address='".$address."',card_info='".$card_info."',phone='".$phonenumber."' where user_id='".$userid."'";
+                echo "Saved successfully";
+            }
+            else
+            {
+                $sql = "INSERT INTO users VALUES ('$userid', '$name', '$password', '$address', '$card_info', '$phonenumber', '1')";
+                echo "Account created successfully";
+            }
            //echo $sql;
             mysqli_query($con, $sql);
         }

@@ -38,8 +38,11 @@ $db = "onlinemoviestore";
              if(!empty($_POST["phonenumber"])) {
               $phonenumber = $_POST["phonenumber"];
               $sql = "SELECT * FROM users WHERE phone='$phonenumber';";
+              if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != "guest") {
+                $sql = "SELECT * FROM users WHERE user_id !='".$_SESSION['user_id']."' and phone='$phonenumber';";
+              }
                 $query = mysqli_query($con, $sql);
-                if(mysqli_num_rows($query) == 0){
+                if(mysqli_num_rows($query) == 0 ){
                   echo "Ok";
                 }
                 else{

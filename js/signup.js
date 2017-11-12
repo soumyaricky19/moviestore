@@ -138,7 +138,6 @@ $(document).ready(function() {
                         "phonenumber": phonenumber
                     },
                     success: function(result) {
-                        
                         if(result=="Ok")	
                             {
                                 $("#phoneError").hide();
@@ -174,7 +173,8 @@ $("#submit").click(function() {
                 "phonenumber": phonenumber
             },
             success: function(data){
-                
+                alert(data);
+                window.location.href = "home.php";
             }
         }); 
     

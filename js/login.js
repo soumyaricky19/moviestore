@@ -9,12 +9,12 @@ $(document).ready(function() {
                 if (data.indexOf("ok")>-1)
                 {
                     alert("Login successful");
+                    window.location.href = "home.php";	
                 }
                 else
                 {
                     alert("Incorrect username/password");
-                }
-                window.location.href = "home.php";								
+                }							
             },
             error:function(err){
                 alert(err);
