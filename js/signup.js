@@ -70,7 +70,7 @@ $(document).ready(function() {
                     },
                     
                     success: function(result) {
-                        
+                        alert(result);
                         if(result=="Ok")	
                             {
                                 $("#uNameError").hide();
@@ -138,7 +138,8 @@ $(document).ready(function() {
                         "phonenumber": phonenumber
                     },
                     success: function(result) {
-                        if(result=="Ok")	
+                        alert(result);
+                        if(result=="Ok")
                             {
                                 $("#phoneError").hide();
                                 $("#phoneSuccess").show();	

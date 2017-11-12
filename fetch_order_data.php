@@ -30,7 +30,7 @@
         $poster =  preg_replace('/185/','92',$movie_row['imageUrl']);  
         //$table=$table."<tr><td><img src='" .$poster. "' alt='Image not found' title='".$movie_row['title']."' /></td><td>".$purchases_row["quantity"]."</td><td>$".$purchases_row["price"]."</td><td>".$purchases_row["order_id"]."</td><td>".$purchases_row["time"]."</td></tr>";          
         $list = '';
-        $img = "<img src='" .$poster. "' alt='Image not found' title='".$movie_row['title']."' />";
+        $img = "<a href='description.php?id=".$movie_id."' ><img src='" .$poster. "' alt='Image not found' title='".$movie_row['title']."' /></a>";
         $list->img = $img;
         $list->qty = $purchases_row["quantity"];
         $list->price = $purchases_row["price"];
