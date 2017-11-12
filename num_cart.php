@@ -29,7 +29,12 @@
     }
     else
     {
-        $count=count($session_cart);
+        // $count=count($session_cart);
+        foreach($session_cart as $item)
+        {
+            $count+=$item['quantity'];
+        }
+
     }
     
     

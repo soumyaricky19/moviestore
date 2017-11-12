@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$(document).on("click", "div.cartButton button", function(){
 		var val = this.id;
 		var movieId = val.substring(3);

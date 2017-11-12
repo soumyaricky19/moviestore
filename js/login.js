@@ -6,7 +6,14 @@ $(document).ready(function() {
             type: 'POST',
             data: {userid: $("#userid").val() ,password: $("#password").val()},
             success:function(data){
-                alert(data);
+                if (data.indexOf("ok")>-1)
+                {
+                    alert("Login successful");
+                }
+                else
+                {
+                    alert("Incorrect username/password");
+                }
                 window.location.href = "home.php";								
             },
             error:function(err){

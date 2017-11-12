@@ -5,6 +5,7 @@
         exit();
 	}
     $user_id = $_SESSION["user_id"];
+    $session_cart=$_SESSION["session_cart"];    
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -25,10 +26,12 @@
     if ($password == $row["password"])
     {   
         $_SESSION["user_id"]=$userid;
-        echo ("Login successful");
-    }
-    else
-    {
-        echo ("Incorrect username/password");
+        //Update cart
+        foreach($session_cart as $item) {
+            $_SESSION['movie_id']=$item['movie_id'];
+            $_SESSION['quantity']=$item['quantity'];
+            require('cart_update.php');
+        }
+        echo ("ok");
     }
 ?>

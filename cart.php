@@ -6,7 +6,6 @@
 	}
     $user_id = $_SESSION["user_id"];
     $session_cart=$_SESSION["session_cart"];
-
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -53,6 +52,7 @@
         }
         else {
             foreach($session_cart as $row){
+                // echo "<script>alert('".array_keys($row)."')</script>";
                 $totalQuantity = $totalQuantity + $row['quantity'];
                 $totalPrice = $totalPrice + $row['price'];    
                 $movie = mysqli_query($conn, "select * from movie where movie_id='".$row['movie_id']."';");

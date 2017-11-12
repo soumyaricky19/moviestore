@@ -2,6 +2,9 @@
     session_start();
     if(!isset($_SESSION["user_id"])) {
         $_SESSION["user_id"]="guest";
+        unset($_SESSION["session_cart"]);
+        unset ($_SESSION["movie_id"]);
+        unset ($_SESSION["quantity"]);
 	  }
 ?>
 <!DOCTYPE html>

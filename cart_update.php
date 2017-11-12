@@ -8,6 +8,14 @@
     $session_cart=$_SESSION["session_cart"];
     $movie_id = $_POST["movie_id"];
     $quantity = $_POST["quantity"];
+    if (isset($_SESSION["movie_id"]) && isset($_SESSION["quantity"]))
+    {
+        $movie_id = $_SESSION["movie_id"];
+        $quantity = $_SESSION["quantity"];
+        unset ($_SESSION["movie_id"]);
+        unset ($_SESSION["quantity"]);
+    }
+    
     $op = $_POST["operation"];
 
 	$servername = "localhost";
@@ -21,7 +29,9 @@
 		die("Connection failed: " . mysqli_connect_error());
     }
 
-    $updated_session_cart=array(array());
+    // $updated_session_cart=array(array());
+    // echo json_encode(array("message" => count($updated_session_cart[0])));
+    //             return; 
     $cart_row=array();
     if($op == "delete") {
         if ($user_id != "guest") {
@@ -33,9 +43,10 @@
             }
         }
         else {
-            foreach($session_cart as $item){
+            $idx=0;
+            foreach($session_cart as $item){ 
                 if ($item['movie_id'] != $movie_id){
-                    array_push($updated_session_cart,$item);
+                    $updated_session_cart[$idx++]=$item;
                 }
             }
         }
@@ -50,6 +61,8 @@
         }   
         else {
             foreach($session_cart as $item){
+                // echo json_encode(array("message" => $item));          
+                // return;
                 if ($item['movie_id'] == $movie_id){
                     $cart_row=$item;
                 }
@@ -85,8 +98,18 @@
                 }    
             }
             else {
-                $new_row = array('movie_id' => $movie_id, 'requested_quantity' => $requested_quantity, 'updated_price' => $updated_price);
-                array_push($updated_session_cart,$new_row);
+                $new_row = array('movie_id' => $movie_id, 'quantity' => $requested_quantity, 'price' => $updated_price);
+                $updated_session_cart=$session_cart;
+                $idx=count($updated_session_cart);             
+                $updated_session_cart[$idx]=$new_row;
+                // echo json_encode(array("message" => $updated_session_cart[idx]['movie_id']));
+                // return; 
+                // for ($updated_session_cart as $item)
+                // {
+                //     echo json_encode(array("message" => $item['movie_id']));
+                //     return; 
+                // } 
+                // return;        
             }
         }
         else {  
@@ -99,13 +122,17 @@
                 }
             }
             else {
+                // echo json_encode(array("message" => $session_cart[0]['movie_id']));
+                // return;
+                $idx=0;
                 foreach($session_cart as $item) {
-                    if ($item['movie_id'] == $movie_id){
-                        $item['requested_quantity']=$requested_quantity;
-                        $item['updated_price']=$updated_price;
+                    if ($item['movie_id'] == $movie_id) {
+                        $item['quantity']=$requested_quantity;
+                        $item['price']=$updated_price;
                     }
-                    array_push($updated_session_cart,$item);
+                    $updated_session_cart[$idx++]=$item;
                 }
+                
             }
         }
     }
