@@ -1,8 +1,5 @@
 $(document).ready(function() 
 {
-
-	$("#deleteBtn891").append("<i class='fa fa-refresh fa-spin'></i>Deleting");
-
 	// Add a new movie to the database
 	$('#addBtn.btn-primary').click(function(e){
         window.location.href = "admin.php";
