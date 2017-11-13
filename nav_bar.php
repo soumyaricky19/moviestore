@@ -4,15 +4,15 @@
         header("location: home.php");
         exit();
 	}
+    session_start();
+    $user_id=$_SESSION["user_id"];
 ?>
     <nav class='navbar navbar-inverse'>
           <div class='container-fluid'>
             <ul id='nav' class='nav navbar-nav'>
                 <li id='home'><a href='home.php'>Home</a></li> 
-                <?php 
-                    session_start();
-                    $user_id=$_SESSION["user_id"];
-                    if ($user_id != "" && $user_id != "guest") {
+                <?php  
+                    if ($user_id != "" && $user_id != "guest" && $user_id != "admin") {
                         echo ("<li id='orders'><a href='order_history.php'>Orders</a></li>");
                     }
                 ?>
@@ -23,8 +23,6 @@
                     </div>
                 </form></li>
                 <?php 
-                    session_start();
-                    $user_id=$_SESSION["user_id"];
                     // echo ("<script>alert('".$user_id."')</script>");
                     if ($user_id != "" && $user_id != "guest") {
                         echo ("<li id='login'><a href='logout.php'>Logout</a></li>");
