@@ -15,13 +15,22 @@ $(document).ready(function()
 			type: 'POST',
 			data:  {movie_id: movieId, operation: "delete"},
 			beforeSend: function() {
-				alert("Before");
 				$("#"+btnId).text('');
 				$("#"+btnId).append("<i class='fa fa-refresh fa-spin'></i>Deleting");
 			},
 			success:function(data){
-				alert(data);
-				location.reload();												
+				var url = window.location.href;
+				if(url.includes('description.php')){
+					window.$_GET = new URLSearchParams(location.search);
+					var movie_id = $_GET.get('id');	
+					if(movie_id == movieId){
+						alert(data+" Redirecting to home page.");
+						window.location.href = 'home.php';
+					}
+				} else {
+					alert(data);
+					location.reload();	
+				}											
 			},
 			error:function(err){
 				alert(err);

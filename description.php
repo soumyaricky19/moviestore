@@ -41,7 +41,7 @@
                         die("Connection failed: " . mysqli_connect_error());
                     }
                     
-                    $query="select * from movie where movie_id=".$movie_id;
+                    $query="select * from movie where is_available = 1 and movie_id=".$movie_id;
                     $result = mysqli_query($conn,$query);
                     $row = mysqli_fetch_array($result);
                     
@@ -60,7 +60,7 @@
                     $poster =  preg_replace('/185/','500',$row['imageUrl']);  
                     $img = "<img src='" .$poster. "' alt='Image not found' title='".$row['title']."' />";
                     $img = $img."<div class='movieDetails'>Movie: <p>".$row['title']."</p>Description: <p>".$row['description']."</p>Director: <p>".$row['director']."</p>Cast: <p>".$casts."</p>Year: <p>".$row['year']."</p>Duration: <p>".$row['duration']." minutes</p>Rating: <p>".$row['rating']."</p>Votes: <p>".$row['votes']."</p>Available Quantity: <p>".$quantity."</p>Price: <p>$".$row['price']."</p></div>";
-                    
+                    $img = "<div class='descr'>".$img."</div>";
                     if($_SESSION["user_id"] == "admin"){
                         $img = $img."<div class='adminButton'><button id='updateBtn".$row['movie_id']."' type ='button' class='btn btn-success'>Update</button>&nbsp;&nbsp;&nbsp;";
                         $img = $img."<button id='deleteBtn".$row['movie_id']."' type ='button' class='btn btn-danger'>Delete</button></div>";
@@ -68,7 +68,6 @@
                         $img = $img."<div class='descDetailContainer cartButton'><span>Qty: <input type='number' id='qty".$row['movie_id']."' min='1' max='".$quantity."' required></span>";
                         $img = $img."&nbsp;<button type='button' id='btn".$row['movie_id']."'>Add to Cart</button></div>";                     
                     }
-                    
                     echo $img;
                 ?>               
             </div>

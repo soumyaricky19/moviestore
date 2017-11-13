@@ -47,6 +47,7 @@ $(document).ready(function() {
 				$('button#fetchImage').append("<i class='fa fa-refresh fa-spin'></i>Fetching..");
 			},
 			success:function(data){
+				alert(data);
 				if(data == "No image found for this movie."){
 					$('button#fetchImage').text('Not found');
 				}

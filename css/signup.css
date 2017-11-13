@@ -3,8 +3,7 @@
 }
 
 .ok {
-	background: #cfc;
-	border: 2px solid #9c9;
+	border: 2px solid rgb(25, 233, 25);
 }
 
 .info {
@@ -13,7 +12,19 @@
 }
 
 .error {
-	background: #fcc;
-	border: 2px solid #c99;
+	border: 2px solid rgb(235, 10, 10);
+}
+
+table#signupInfo tbody tr td:nth-child(1){
+    width:15%;
+    font-weight: bold;
+}
+
+table#signupInfo tbody tr td:nth-child(2){
+    width: 40%;
+}
+
+input.form-control {
+	padding-left: 5px;
 }
 

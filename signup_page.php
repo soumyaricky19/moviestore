@@ -25,103 +25,56 @@
 ?>
 <!DOCTYPE html>
 <html> 
-<head>
-  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-	<script src="js/signup.js"></script>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/signup.css">
-  <title>Signup</title>
-  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-  <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
-  <link href="css/style.css" rel="stylesheet">
-  <script src="js/recent.js"></script>
-  <script src="js/popular.js"></script> 
-  <script src="js/add_cart.js"></script>
-  <script src="js/genre.js"></script> 
-  <script src="js/carousel.js"></script>
-</head>
+  <head>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <meta charset="utf-8">
+    <title>Signup</title>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+    <link href="css/admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/signup.css">
+    <script src="js/signup.js"></script>
+  </head>
+  <body>
+    <?php require('nav_bar.php');?>
 
-<body>
-  <?php require('nav_bar.php');?>
-    
-  <div id="modal-wrapper" class="modal">
-    
-    <form class="modal-content animate" action="login.php">
-          
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-        <h1 style="text-align:center">Modal Popup Box</h1>
-      </div>
-
-      <div class="container">
-        <input type="text" placeholder="Enter Username" name="uname">
-        <input type="password" placeholder="Enter Password" name="psw">        
-        <button type="submit">Login</button>
-      </div>
-      
-    </form>
-  </div>
-    <p>
-    <?php 
-    if ($user == "")
-    {
-      echo "<h2>Create New Account</h2>";
-    }
-    else
-    {
-      echo "<h2>Edit Account Info</h2>";
-    }
-    ?>
-    
-    <br/>
-    <form id="signup" method = "POST">
-      <p>  
-      <label for="userid">User ID </label>
-      <input type="text" name="userid" id="userid" placeholder="userid" 
-      <?php 
-      if ($user != "")
-      {
-        echo 'value="'.$user.'"  disabled';
-      }
-      ?> 
-      required/>
-      <br/><br/>
-        
-      <label for="name">Name </label>
-      <input type="text" name="name" id="name" placeholder="name" <?php echo 'value="'.$name.'"'?> required/>
-      <br/><br/>
-
-      <label for="password">Password </label>
-      <input type="password" name="password" id="password" placeholder="password" <?php echo 'value="'.$pass.'"'?> required/>
-      <br/><br/>
-
-      <label for="address">Address </label>
-      <input type="text" name="address" id="address" placeholder="address" <?php echo 'value="'.$address.'"'?> required/>
-      <br/><br/>
-
-      <label for="card_info">Card Information </label>
-      <input type="text" name="card_info" id="card_info"  maxlength="16" placeholder="card_info" <?php echo 'value="'.$card_info.'"'?> required/>
-      <br/><br/>
-
-      <label for="phonenumber">Phone Number </label>
-      <input type="text" name="phonenumber" id="phonenumber" maxlength="10" placeholder="phonenumber" <?php echo 'value="'.$phone.'"'?> required/>
-      <br/><br/>
-
-      <button type="button" id="submit" name="submit">
-      <?php 
-      if ($user == "")
-      { 
-        echo 'Sign up';
-      }
-      else
-      {
-        echo 'Save';
-      }
-      ?>
-      </button>
-      </p>
-         
-    </form>
-<body>
+    <div class="container detail">
+      <h2><?php if ($user == ""){echo "Create New Account";} else{ echo "Edit Account Info";}?></h2>
+      <p>Please add your details below:</p>            
+      <form id="signup" method="POST" onsubmit="return false">
+          <table id="signupInfo" class="table table-bordered">
+              <tbody>
+                  <tr>
+                      <td>User ID</td>
+                      <td><input class="form-control" type="text" name="userid" id="userid" placeholder="Enter userid" <?php if ($user != "") { echo 'value="'.$user.'"  disabled';} ?> required/></td>
+                  </tr>
+                  <tr>
+                      <td>Name</td>
+                      <td><input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value='<?php  echo $name ?>' required></td>
+                  </tr>
+                  <tr>
+                      <td>Password</td>
+                      <td><input type="password"  class="form-control" name="password" id="password" placeholder="Enter password" value='<?php  echo $pass?>' required></td>
+                  </tr>
+                  <tr>
+                      <td>Address</td>
+                      <td><textarea class="form-control" rows="5" name="address" id="address" placeholder="Enter address details" required><?php  echo $address?></textarea></td>
+                  </tr>
+                  <tr>
+                      <td>Card Information</td>
+                      <td><input type="text" class="form-control" name="card_info" id="card_info"  maxlength="16" placeholder="Enter card number" value='<?php  echo $card_info?>' required></td>
+                  </tr>
+                  <tr>
+                      <td>Phone Number</td>
+                      <td><input type="text" class="form-control" name="phonenumber" id="phonenumber" maxlength="10" placeholder="Enter phone number" value='<?php  echo $phone?>' required></td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="save">
+              <button id="submit" name="submit" type = 'button' class='btn btn-primary'><?php if ($user == ""){ echo 'Sign up';} else{echo 'Save';}?></button>
+          </div>
+      </form>
+    </div>
+  <body>
 </html>

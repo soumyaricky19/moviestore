@@ -127,7 +127,7 @@ div.description-container img{
     margin-right: 10px;
     float: left;
 }
-div.description-container div.description-item{
+div.description-container div.description-item div.descr{
     overflow: auto;
 }
 div.descDetailContainer{
@@ -147,6 +147,12 @@ div.descDetailContainer button{
 div.adminButton{
     margin-top: 18px;
     text-align: center;
+}
+
+div.description-item div.adminButton{
+    margin-top: 18px;
+    padding-left: 40%;
+    text-align: inherit;
 }
 
 div#myCarousel div.adminButton{
@@ -186,10 +192,10 @@ div#addMovie.adminButton{
 100% { transform: rotate(360deg); }
 } 
 
-div.carousel-inner {
+div.carousel-inner, div.popular.cover-container, div.recent.cover-container {
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
     -ms-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
     transition: opacity .5s ease-in-out;
- }
+}

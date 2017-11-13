@@ -5,12 +5,11 @@ $(document).ready(function(){
 		var quantityId = "#qty"+movieId;
 		var qtyValue = $(quantityId).val();
 
-		alert("Hi"+quantityId);
 		if(qtyValue == ""){
 			qtyValue = $("[id=qty"+movieId+"]:eq(1)").val();
 		}
 
-		if(qtyValue == "" || qtyValue == "undefined"){
+		if(qtyValue == "" || qtyValue == undefined){
 			alert("Please provide the quantity.")
 		}
 		else if(qtyValue < 0 || qtyValue == -0){
@@ -18,7 +17,6 @@ $(document).ready(function(){
 			$(quantityId).val('');
 		}
 		else{
-			alert("Hi"+qtyValue);	
 			$.ajax({
 				url: 'cart_update.php',
 				type: 'POST',
@@ -27,6 +25,7 @@ $(document).ready(function(){
 					var resp = JSON.parse(data);
 					if(resp.message == "Cart Updated"){
 						alert("Added to cart");	
+						$(quantityId).val('');
 					}
 					else {
 						alert(resp.message);
