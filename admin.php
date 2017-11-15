@@ -64,7 +64,7 @@
                         </tr>
                         <tr>
                             <td>Duration (Minutes)</td>
-                            <td><input type="number" class="form-control" id="duration" placeholder="Enter movie duration" value='<?php  echo $row['duration']?>' required></td>
+                            <td><input type="number" class="form-control" id="duration" min="0" placeholder="Enter movie duration" value='<?php  echo $row['duration']?>' required></td>
                         </tr>
                         <tr>
                             <td>Rating</td>
@@ -72,15 +72,15 @@
                         </tr>
                         <tr>
                             <td>Votes</td>
-                            <td><input type="number" class="form-control" id="votes" placeholder="Enter votes" value='<?php  echo $row['votes']?>' required></td>
+                            <td><input type="number" class="form-control" id="votes" min="0" placeholder="Enter votes" value='<?php  echo $row['votes']?>' required></td>
                         </tr>
                         <tr>
                             <td>Quantity</td>
-                            <td><input type="number" class="form-control" id="qty" placeholder="Enter available quantity" value='<?php  echo $row['quantity']?>' required></td>
+                            <td><input type="number" class="form-control" id="qty" min="0" placeholder="Enter available quantity" value='<?php  echo $row['quantity']?>' required></td>
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td><input type="number" class="form-control" id="price" placeholder="Enter movie price" value='<?php  echo $row['price']?>' required></td>
+                            <td><input type="number" class="form-control" id="price" min="1" placeholder="Enter movie price" value='<?php  echo $row['price']?>' required></td>
                         </tr>
                     </tbody>
                 </table>

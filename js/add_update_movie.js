@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     $("#movieDetails").submit(function(e) {
+
         var url = window.location.href;
         window.$_GET = new URLSearchParams(location.search);
         var movie_id = $_GET.get('movie_id');

@@ -42,7 +42,7 @@
     <div class="container detail">
       <h2><?php if ($user == ""){echo "Create New Account";} else{ echo "Edit Account Info";}?></h2>
       <p>Please add your details below:</p>            
-      <form id="signup" method="POST" onsubmit="return false">
+      <form id="signupDetails" method="POST" onsubmit="return false">
           <table id="signupInfo" class="table table-bordered">
               <tbody>
                   <tr>
@@ -55,7 +55,7 @@
                   </tr>
                   <tr>
                       <td>Password</td>
-                      <td><input type="password"  class="form-control" name="password" id="password" placeholder="Enter password" value='<?php  echo $pass?>' required></td>
+                      <td><input type="password"  class="form-control" name="password" id="password" placeholder="Enter password" value='' required></td>
                   </tr>
                   <tr>
                       <td>Address</td>
@@ -72,7 +72,7 @@
               </tbody>
           </table>
           <div class="save">
-              <button id="submit" name="submit" type = 'button' class='btn btn-primary'><?php if ($user == ""){ echo 'Sign up';} else{echo 'Save';}?></button>
+              <input id='btnSave' name='btnSave' type = 'submit' class='btn btn-primary' value='<?php if ($user == ""){ echo "Sign up";} else{echo "Save";}?>'></button>
           </div>
       </form>
     </div>

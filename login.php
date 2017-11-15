@@ -23,8 +23,8 @@
     $query="select * from users where user_id='".$userid."'";
     $result=mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
-    if ($password == $row["password"])
-    {   
+    
+    if(password_verify($password,$row["password"])) {   
         $_SESSION["user_id"]=$userid;
         //Update cart
         foreach($session_cart as $item) {
@@ -32,6 +32,8 @@
             $_SESSION['quantity']=$item['quantity'];
             require('cart_update.php');
         }
-        echo ("ok");
+        echo "Login successful";
+    } else {
+        echo "Incorrect username/password";
     }
 ?>
