@@ -6,8 +6,8 @@ $(document).ready(function() {
             type: 'POST',
             data: {userid: $("#userid").val() ,password: $("#password").val()},
             success:function(data){
-                if (data == "Login successful") {
-                    alert(data);
+                if (data.indexOf("Login successful") > -1) {
+                    alert("Login successful");
                     window.location.href = "home.php";	
                 }
                 else {
