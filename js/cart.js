@@ -140,6 +140,56 @@ $(document).ready(function()
 		 }	 
 	 });
 
+	 $('.input-number').focusout(function(){
+		var inputId = $(this).attr('id');
+		var movieId = inputId.substring(3);
+		var value = parseInt($(this).val());
+		var price = $("p#p"+movieId);
+		//Ajax call to update cart
+		$.ajax({
+			url: 'cart_update.php',
+			type: 'POST',
+			data:  {movie_id: movieId, quantity: value, operation: "update"},
+			success:function(data){
+				var resp = JSON.parse(data);
+				//alert(resp.message);			
+				if(resp.message == "Cart Updated"){	
+					price.text("$"+resp.price);
+					var totalQty = 0;
+					
+					//Update total Quantity
+					$(".input-number").each(function(index){
+						totalQty += parseInt($(this).val());
+					});
+					$("div#totalQty.total").text(totalQty);
+					
+					//Update total Price
+					var totalPrice = 0
+					$(".price").each(function(index){
+						totalPrice += parseInt($(this).text().substring(1));
+					});
+					$("div#totalPrice.total").text("$"+totalPrice);	
+					var x ='';
+					$.ajax({
+					type: "POST",
+					url: "num_cart.php",
+					success: function(num) {
+						$("#cart").empty();
+						$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+					}
+					});	
+				} 
+				else {
+					alert("SQL Error-"+resp.message+" Reverting back the changes.");
+					input.val(currentVal).change();
+				}
+			},
+			error:function(err){
+				alert(err);
+			}
+		});
+	});
+
 	//Update the cart when removing a movie 
 	$('.btn-danger').click(function(e){
 		e.preventDefault();	
