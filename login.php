@@ -27,10 +27,13 @@
     if(password_verify($password,$row["password"])) {   
         $_SESSION["user_id"]=$userid;
         //Update cart
-        foreach($session_cart as $item) {
-            $_SESSION['movie_id']=$item['movie_id'];
-            $_SESSION['quantity']=$item['quantity'];
-            require('cart_update.php');
+        if ($userid != "admin")
+        {
+            foreach($session_cart as $item) {
+                $_SESSION['movie_id']=$item['movie_id'];
+                $_SESSION['quantity']=$item['quantity'];
+                require('cart_update.php');  
+            }
         }
         echo "Login successful";
     } else {
