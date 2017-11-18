@@ -36,7 +36,8 @@
         $list->price = $purchases_row["price"];
         $list->orderId = $purchases_row["order_id"];
         $list->time = $purchases_row["time"];
-
+        $list->movieId = $purchases_row["movie_id"];
+        $list->is_cancelled = $purchases_row["is_cancelled"];
         array_push($totalOrders,$list);
     }
     //$table=$table."</tbody></table>";
