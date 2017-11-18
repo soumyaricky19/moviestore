@@ -9,7 +9,7 @@
     $password = "root";
     $db = "onlinemoviestore";
 
-    $con=mysqli_connect($servername,$username,$password,$db);
+    $conn=mysqli_connect($servername,$username,$password,$db);
     if (mysqli_connect_errno()) {
         die("Connection failed: " . mysqli_connect_error());
     }
@@ -29,14 +29,20 @@
 
         if (isset($_SESSION["user_id"]) && $_SESSION["user_id"] != "guest") {
             $sql = "update users set name='".$name."', password='".$hash."', address='".$address."',card_info='".$card_info."',phone='".$phonenumber."' where user_id='".$userid."'";
+            if (!mysqli_query($conn, $sql)) {
+                    echo "update error";
+                    return;
+            }
             echo "Saved successfully";
         }
         else
         {
-            $sql = "INSERT INTO users VALUES ('$userid', '$name', '$hash', '$address', '$card_info', '$phonenumber', '1')";
+            $sql = "INSERT INTO users VALUES ('$userid', '$name', '$hash', '$address', '$card_info', '$phonenumber')";
+            if (!mysqli_query($conn, $sql)) {
+                    echo "insert error";
+                    return;
+            }
             echo "Account created successfully";
         }
-        //echo $sql;
-        mysqli_query($con, $sql);
     }
 ?>
