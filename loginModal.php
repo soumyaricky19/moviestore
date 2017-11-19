@@ -3,8 +3,8 @@
           <div class="loginmodal-container">
             <h1>Login to Your Account</h1><br>
             <form id="loginForm" method="POST" onsubmit="return false">
-              <input type="text" name="userid" id="userid" placeholder="Username" required>
-              <input type="password" name="password" id="password" placeholder="Password" required>
+              <input type="text" name="userId" id="userId" placeholder="Username" required>
+              <input type="password" name="pass" id="pass" placeholder="Password" required>
               <input type="submit" name="login" class="login loginmodal-submit" value="Login">
             </form>		
             <div class="login-help">

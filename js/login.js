@@ -4,7 +4,7 @@ $(document).ready(function() {
         $.ajax({
             url: 'login.php',
             type: 'POST',
-            data: {userid: $("#userid").val() ,password: $("#password").val()},
+            data: {userid: $("#userId").val() ,password: $("#pass").val()},
             success:function(data){
                 if (data.indexOf("Login successful") > -1) {
                     alert("Login successful");

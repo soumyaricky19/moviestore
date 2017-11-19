@@ -32,8 +32,9 @@
     <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
     <link href="css/admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/signup.css">
+    <link href="css/signup.css" rel="stylesheet" >
     <link href="css/login.css" rel="stylesheet">
     <script src="js/signup.js"></script>
     <script src="js/login.js"></script>
@@ -57,8 +58,18 @@
                       <td><input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value='<?php  echo $name ?>' required></td>
                   </tr>
                   <tr>
-                      <td>Password</td>
-                      <td><input type="password"  class="form-control" name="password" id="password" placeholder="Enter password" value='' required></td>
+                    <td>Password</td>
+                    <td>
+                        <input type="password"  class="form-control" name="password" id="password" placeholder="Enter password" value='' required>
+                        <meter max="4" id="password-strength-meter"></meter>
+                        <p id="password-strength-text"></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Confirm Password</td>
+                    <td>
+                        <input type="password"  class="form-control" name="cnfPassword" id="cnfPassword" placeholder="Confirm password" value='' required>
+                    </td>
                   </tr>
                   <tr>
                       <td>Address</td>

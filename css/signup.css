@@ -1,3 +1,41 @@
+@import url(https://fonts.googleapis.com/css?family=Signika:400,700|Courgette);
+
+meter {
+    /* Reset the default appearance */
+    -webkit-appearance: meter;
+       -moz-appearance: none;
+            
+    width: 100%;
+    height: 1em;
+}
+
+meter::-webkit-meter-bar {
+    background: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+p#password-strength-text{
+	margin-bottom: 5px;
+}
+
+meter::-webkit-meter-optimum-value{
+	-webkit-transition: width .5s; 
+}
+
+meter[value="1"]::-webkit-meter-optimum-value { background: red; }
+meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
+meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
+meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+
+
+.feedback {
+    color: #9ab;
+    font-size: 90%;
+    padding: 0 .25em;
+    font-family: Courgette, cursive;
+    margin-top: 1em;
+}
+
 .ok, .info, .error {
 	padding: 0px 2px;
 }
@@ -31,3 +69,4 @@ input.form-control {
 div.container.detail{
 	margin-top: 60px;
 }
+

@@ -4,22 +4,24 @@ $(document).ready(function() {
     var numberReg = new RegExp(/^[0-9]+$/);
     var uNameReg = new RegExp(/^[A-Za-z0-9]+$/);
     var emailReg = new RegExp(/^[A-Za-z0-9]+\@[a-z0-9A-Z\.]+$/);
+    var passwordReg = new RegExp(/((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,})/);
     var useridFlag = false;
     var userNameFlag = false;
     var passwordFlag = false;
     var addressFlag = true;
     var cardFlag = false;
     var phoneFlag = false;
+    var confirmPasswordFlag = false;
     
     $("#userid").after("<span id='uNameNote' class='info'>The userid field must contain only alphabetical or numeric characters</span>");
-    $("#password").after("<span id='pwdNote' class=\"info\">The password field should be at least 8 characters long</span>");
+    $("#password-strength-text").after("<span id='pwdNote' class=\"info\">Password must be 8 characters including 1 uppercase letter, 1 special character, alphanumeric characters</span>");
     $("#name").after("<span id='nameNote' class=\"info\">The name field must contain only alphabetical characters</span>");
     $("#card_info").after("<span id='cardNote' class=\"info\">The card information field must contain 16 digit number</span>");
     $("#phonenumber").after("<span id='phoneNote' class=\"info\">The phone number must contain 10 digits</span>");
-    $("#phonenumber").after("<span id=results></span>");
+    $("#cnfPassword").after("<span id='confirmPassNote' class=\"info\">Password does not match</span>");
     
 
-    $("#uNameNote,#pwdNote,#emailNote,#phoneNote,#nameNote,#cardNote").hide();  
+    $("#uNameNote,#pwdNote,#emailNote,#phoneNote,#nameNote,#cardNote,#confirmPassNote").hide();  
     
     $("#userid").focus(function(){
         $("#uNameNote").text("The userid field must contain only alphabetical or numeric characters");
@@ -70,17 +72,36 @@ $(document).ready(function() {
             }
         }
     });
+
     $("#password").focusout(function(){
         $("#pwdNote").hide();    
         var password = $("#password").val();
         if(password.length != 0){
-            if(password.length < 8){
+            if(!passwordReg.test(password)){
                 $("#password").removeClass('ok').addClass('error');  
                 passwordFlag = false;     
             }
             else{
                 $("#password").removeClass('error').addClass('ok');    
                 passwordFlag = true;  
+            }
+        }
+    });
+
+    $("#cnfPassword").focusout(function(){    
+        var password = $("#password").val();
+        var confirmPass = $("#cnfPassword").val();
+        
+        if(confirmPass.length != 0){
+            if(password != confirmPass){
+                $("#cnfPassword").removeClass('ok').addClass('error');  
+                $("#confirmPassNote").show();
+                confirmPasswordFlag = false;     
+            }
+            else{
+                $("#confirmPassNote").hide();
+                $("#cnfPassword").removeClass('error').addClass('ok');    
+                confirmPasswordFlag = true;  
             }
         }
     });
@@ -202,11 +223,10 @@ $(document).ready(function() {
     }
     
     $("#signupDetails").submit(function(e) {
-        
         var type = $("#btnSave").val();
         if(type == "Sign up"){
             if(validateUserID() && validatePhone()){               
-                if(!(useridFlag && userNameFlag && passwordFlag && addressFlag && cardFlag && phoneFlag)){
+                if(!(useridFlag && userNameFlag && passwordFlag && addressFlag && cardFlag && phoneFlag && confirmPasswordFlag)){
                     alert("Please verify the entered information.");
                     return;
                 }
@@ -244,7 +264,7 @@ $(document).ready(function() {
         else {
             if(validatePhone()){     
                 
-                var check = $("#name").hasClass('error') + $("#phonenumber").hasClass('error') + $("#password").hasClass('error') + $("#card_info").hasClass('error');
+                var check = $("#name").hasClass('error') + $("#phonenumber").hasClass('error') + $("#password").hasClass('error') + $("#card_info").hasClass('error') + $("#cnfPassword").hasClass('error');
                 
                 if(check != 0){
                     alert("Please verify the entered information.");
@@ -283,6 +303,36 @@ $(document).ready(function() {
         }
                
     });
+
+
+    var strength = {
+        0: "Worst ☹",
+        1: "Bad ☹",
+        2: "Weak ☹",
+        3: "Good ☺",
+        4: "Strong ☻"
+    }
+
+    var password = document.getElementById('password');
+    var meter = document.getElementById('password-strength-meter');
+    var text = document.getElementById('password-strength-text');
+
+    password.addEventListener('input', function(){
+        var val = password.value;
+        var result = zxcvbn(val);
+        
+        // Update the password strength meter
+        meter.value = result.score;
+    
+        // Update the text indicator
+        if(val !== "") {
+            text.innerHTML = "Strength: " + "<strong>" + strength[result.score] + "</strong>" + "<span class='feedback'>" + result.feedback.warning + " " + result.feedback.suggestions + "</span"; 
+        }
+        else {
+            text.innerHTML = "";
+        }
+    });
+
 });
 
     
