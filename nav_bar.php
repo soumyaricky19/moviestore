@@ -27,8 +27,11 @@
                     if ($user_id != "" && $user_id != "guest") {
                         echo ("<li id='login'><a href='logout.php'>Logout</a></li>");
                     }
-                    else {
-                        echo ("<li id='login'><a href='login_page.php'>Login</a></li><li id='signup'><a href='signup_page.php'>Sign Up</a></li>");
+                    else {                        
+                        //echo ("<li id='login'><a href='login_page.php'>Login</a></li><li id='signup'><a href='signup_page.php'>Sign Up</a></li>");
+                        
+                        echo ("<li id='login'><a href='#' data-toggle='modal' data-target='#login-modal'>Login</a></li><li id='signup'><a href='signup_page.php'>Sign Up</a></li>");
+                        
                     }
                     echo ("<li><h3><a href='signup_page.php'> Welcome " .$user_id."</a></h3></li>");
                 ?>

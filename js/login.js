@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    
-    $('#submit').click(function(e){
+    $('#loginForm').submit(function(e){
         $.ajax({
             url: 'login.php',
             type: 'POST',
@@ -18,6 +17,10 @@ $(document).ready(function() {
                 alert(err);
             }
         });
+    });
+
+    $('li#login a').mouseover(function(){  
+        $(this).trigger('click');  
     });
 });
 
