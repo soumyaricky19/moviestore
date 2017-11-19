@@ -1,14 +1,9 @@
 <?php
     session_start();
-    if(!isset($_SESSION["user_id"])) {
+    if(!isset($_SESSION["user_id"]) or $_SESSION["user_id"] == "guest") {
         header("location: home.php");
         exit();
 	}
-    if ($_SESSION["user_id"] == "guest")
-    {
-        header("location: login_page.php");
-        exit();
-    }
 ?>
 <!DOCTYPE html>
 <html>  
