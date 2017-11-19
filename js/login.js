@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#loginForm').submit(function(e){
+        var current_page=window.location.href;
         $.ajax({
             url: 'login.php',
             type: 'POST',
@@ -7,7 +8,7 @@ $(document).ready(function() {
             success:function(data){
                 if (data.indexOf("Login successful") > -1) {
                     alert("Login successful");
-                    window.location.href = "home.php";	
+                    window.location.href = current_page;	
                 }
                 else {
                     alert(data);
