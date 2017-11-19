@@ -30,14 +30,17 @@
     <meta charset="utf-8">
     <title>Signup</title>
     <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
     <link href="css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="css/signup.css">
+    <link href="css/login.css" rel="stylesheet">
     <script src="js/signup.js"></script>
+    <script src="js/login.js"></script>
   </head>
   <body>
     <?php require('nav_bar.php');?>
+    <?php require('loginModal.php');?>
 
     <div class="container detail">
       <h2><?php if ($user == ""){echo "Create New Account";} else{ echo "Edit Account Info";}?></h2>

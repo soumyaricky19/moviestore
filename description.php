@@ -10,17 +10,20 @@
     <head>
         <title></title>
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script> 
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
+        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
         <script src="js/recent.js"></script>
         <script src="js/popular.js"></script> 
         <script src="js/add_cart.js"></script>
         <script src="js/admin.js"></script> 
+        <script src="js/login.js"></script>
     </head>
     <body>
         <?php require('nav_bar.php');?>
+        <?php require('loginModal.php');?>
         <br/> 
         <div class='description-container'>
             <div class='description-item'>

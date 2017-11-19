@@ -3,14 +3,26 @@ body{
 }
 nav.navbar.navbar-inverse{
     background-color: rgba(10, 10, 10, 1);
-    margin: 0px;
+    width: 1366px;
+    border: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 20px;
 }
 ul.nav.navbar-nav li{
-    height: 10px;
+    height: auto;
 }
-div.carousel.slide{
-    margin-top: 20px;
+ul.nav.navbar-nav.navbar-right li a{
+    color: #bfbcc5;
 }
+ul.nav.navbar-nav.navbar-right li a:hover{
+    color: white;
+}
+
+div#carousel {
+    margin-top: 70px;
+}
+
 div.carousel.slide img{
     width: 441px;
     height: 520px;
@@ -103,6 +115,9 @@ div.detailContainer div span{
 h1{
     font-family: "Open Sans Regular",sans-serif;
     color:#bdc1c3;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 input[type="number"], textarea {
     background-color : #ddd6d6; 
@@ -129,6 +144,9 @@ div.description-container img{
 }
 div.description-container div.description-item div.descr{
     overflow: auto;
+}
+div.description-container{
+    margin-top: 50px;
 }
 div.descDetailContainer{
     margin-top: 25px;
@@ -161,9 +179,11 @@ div#myCarousel div.adminButton{
 }
 
 div#addMovie.adminButton{
-    margin-top: 18px;
-    margin-right: 50px;
-    text-align: right; 
+    margin-top: 8px;
+    margin-left: 25px; 
+}
+div#addMovie.adminButton button{
+    color: #f4e9e9;
 }
 /* Add a right margin to each icon */
 .fa {

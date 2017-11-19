@@ -1,6 +1,5 @@
 div.order.col-lg-12.col-md-10{
-    /* color: white;
-    background-color: gray; */
+    margin-top: 50px;
 }
 table.table.table-bordered thead{
     color: #d0d3d4;
@@ -47,6 +46,6 @@ div.orderContainer {
 div#noResults{
     color: gray;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
 }

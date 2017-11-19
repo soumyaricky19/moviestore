@@ -73,14 +73,17 @@
     <head>
         <title></title>
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
+        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/cart.css" rel="stylesheet">   
         <script src="js/cart.js"></script>
+        <script src="js/login.js"></script>
+        <link href="css/login.css" rel="stylesheet">
     </head>
     <body> 
         <?php require('nav_bar.php');?>
+        <?php require('loginModal.php');?>
         <div class="container cart">
             <h2>Hello <?php  echo $_SESSION['user_id']?>,</h2>
             <p>Please find your cart details below:</p>            

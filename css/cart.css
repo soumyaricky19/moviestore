@@ -26,7 +26,7 @@ div#emptyCart{
 }
 div.cart{
     height: 100%;
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 table#cartTable tbody tr td:nth-child(1){

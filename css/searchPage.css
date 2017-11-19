@@ -24,7 +24,9 @@ div.searchResults.col-lg-12.col-md-10 div.orderbutton{
     margin-top: 0px;
     margin-left: 42%;
 }
-
+div.searchResults.col-lg-12.col-md-10{
+    margin-top: 45px;
+}
 div#searchResults {
    -webkit-transition: opacity .5s ease-in-out;
    -moz-transition: opacity .5s ease-in-out;
