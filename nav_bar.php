@@ -41,7 +41,13 @@
                     echo ("<li id='login'><a href='#' data-toggle='modal' data-target='#login-modal'><span class='glyphicon glyphicon-log-in'></span>&nbsp;Login</a></li><li id='signup'><a href='signup_page.php'><span class='glyphicon glyphicon-user'></span>&nbsp;Sign Up</a></li>");       
                 }
             ?>
-            <li id='cart'><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li>
+            <!-- <li id='cart'><a href='cart.php'>Cart (<?php require('num_cart.php');?> ) </a></li> -->
+            <li id='cart'>
+                <a href="cart.php" class="btn btn-info btn-lg">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> <?php require('num_cart.php');?>
+                </a>
+            </li>
+            
         </ul>
         <script>  
             $(document).ready(function(){

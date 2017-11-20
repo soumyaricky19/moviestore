@@ -19,6 +19,17 @@ ul.nav.navbar-nav.navbar-right li a:hover{
     color: white;
 }
 
+ul.nav.navbar-nav li#cart a{
+    padding: 6px;
+    height: auto;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 10px;
+    color: #afced5;
+    background-color: rgba(10, 10, 10, 1);
+    border-color: rgba(10, 10, 10, 1);
+}
+
 div#carousel {
     margin-top: 70px;
 }

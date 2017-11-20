@@ -36,7 +36,7 @@ $(document).ready(function(){
 					url: "num_cart.php",
 					success: function(num) {
 						$("#cart").empty();
-						$("#cart").append("<a href='cart.php'>Cart ("+ num + " ) </a>");	
+						$("#cart").append('<a href="cart.php" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span>' + num +'</a>');	
 					}
 					});															
 				},
