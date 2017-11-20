@@ -70,3 +70,21 @@ div.container.detail{
 	margin-top: 60px;
 }
 
+nav.navbar.navbar-inverse{
+    background-color: rgba(10, 10, 10, 1);
+    width: 1366px;
+    border: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 20px;
+}
+ul.nav.navbar-nav li{
+    height: auto;
+}
+ul.nav.navbar-nav.navbar-right li a{
+    color: #bfbcc5;
+}
+ul.nav.navbar-nav.navbar-right li a:hover{
+    color: white;
+}
+

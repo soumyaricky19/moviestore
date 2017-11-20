@@ -32,6 +32,10 @@ $(document).ready(function() {
         $("#pwdNote").show();
     });
     
+    $("#cnfPassword").focus(function(){
+        $("#confirmPassNote").hide();
+    });
+    
     $("#name").focus(function(){
         $("#nameNote").show();
     });
@@ -71,6 +75,9 @@ $(document).ready(function() {
                 });
             }
         }
+        else{
+            $("#userid").removeClass('error').removeClass('ok');
+        }
     });
 
     $("#password").focusout(function(){
@@ -85,6 +92,9 @@ $(document).ready(function() {
                 $("#password").removeClass('error').addClass('ok');    
                 passwordFlag = true;  
             }
+        }
+        else{
+            $("#password").removeClass('error').removeClass('ok');
         }
     });
 
@@ -104,7 +114,11 @@ $(document).ready(function() {
                 confirmPasswordFlag = true;  
             }
         }
+        else{
+            $("#cnfPassword").removeClass('error').removeClass('ok');
+        }
     });
+
     $("#name").focusout(function(){
         var name1=$("#name").val();
         $("#nameNote").hide();    
@@ -117,7 +131,10 @@ $(document).ready(function() {
                 $("#name").removeClass('error').addClass('ok');
                 userNameFlag = true;
             }
-    }
+        }
+        else{
+            $("#name").removeClass('error').removeClass('ok');
+        }
     });
     $("#card_info").focusout(function(){
         $("#cardNote").hide();    
@@ -131,7 +148,10 @@ $(document).ready(function() {
                 $("#card_info").removeClass('error').addClass('ok');      
                 cardFlag = true; 
             }
-    }
+        }
+        else{
+            $("#card_info").removeClass('error').removeClass('ok');
+        }
     });
     $("#phonenumber").focusout(function(){
         $("#phoneNote").hide();    
@@ -158,6 +178,9 @@ $(document).ready(function() {
                     }
                 });
             }
+        }
+        else{
+            $("#phonenumber").removeClass('error').removeClass('ok');
         }
     });
 
@@ -221,10 +244,32 @@ $(document).ready(function() {
         }
         return phoneFlag;     
     }
+
+    function validateConfirmPassword(){
+        var password = $("#password").val();
+        var confirmPass = $("#cnfPassword").val();
+        
+        if(confirmPass.length != 0){
+            if(password != confirmPass){
+                $("#cnfPassword").removeClass('ok').addClass('error');  
+                $("#confirmPassNote").show();
+                confirmPasswordFlag = false;     
+            }
+            else{
+                $("#confirmPassNote").hide();
+                $("#cnfPassword").removeClass('error').addClass('ok');    
+                confirmPasswordFlag = true;  
+            }
+        }
+        else{
+            $("#cnfPassword").removeClass('error').removeClass('ok');
+        }
+    }
     
     $("#signupDetails").submit(function(e) {
         var type = $("#btnSave").val();
         if(type == "Sign up"){
+            validateConfirmPassword();
             if(validateUserID() && validatePhone()){               
                 if(!(useridFlag && userNameFlag && passwordFlag && addressFlag && cardFlag && phoneFlag && confirmPasswordFlag)){
                     alert("Please verify the entered information.");
@@ -262,10 +307,9 @@ $(document).ready(function() {
             }
         } 
         else {
-            if(validatePhone()){     
-                
+            if(validatePhone()){   
+                validateConfirmPassword();            
                 var check = $("#name").hasClass('error') + $("#phonenumber").hasClass('error') + $("#password").hasClass('error') + $("#card_info").hasClass('error') + $("#cnfPassword").hasClass('error');
-                
                 if(check != 0){
                     alert("Please verify the entered information.");
                     return;

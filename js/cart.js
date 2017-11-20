@@ -235,7 +235,7 @@ $(document).ready(function()
 				if (data == " Order placed succesfully!") {
 					window.location.href = "order_history.php";
 				} else if (data == " Please login before continuing") {
-					window.location.href = "login_page.php";
+					$("li#login a").trigger('click');  
 				}						
 			},
 			error:function(err){
