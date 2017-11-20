@@ -45,36 +45,48 @@
         }
         switch ($search_criteria) {
             case "title":
-                $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
+                form_output($conn,form_query($query_title,$entire_text));
                 break;
             case "actor":
-                $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
+                form_output($conn,form_query($query_actor,$entire_text));
                 break;
             case "director":
-                $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
+                form_output($conn,form_query($query_director,$entire_text));
                 break;
             default:
-                $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
-                $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
-                $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
+                form_output($conn,form_query($query_title,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
+                form_output($conn,form_query($query_director,$entire_text));
+                // $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
+                form_output($conn,form_query($query_actor,$entire_text));
         } 
         foreach($tokens as $token) {
             if (!in_array($token,$stop_list))
             {   
                 switch ($search_criteria) {
                     case "title":
-                        $display_output=$display_output.form_output($conn,form_query($query_title,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_title,$token));
+                        form_output($conn,form_query($query_title,$token));
                         break;
                     case "actor":
-                        $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
+                        form_output($conn,form_query($query_actor,$token));
                         break;
                     case "director":
-                        $display_output=$display_output.form_output($conn,form_query($query_director,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_director,$token));
+                        form_output($conn,form_query($query_director,$token));
                         break;
                     default:
-                        $display_output=$display_output.form_output($conn,form_query($query_title,$token));
-                        $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
-                        $display_output=$display_output.form_output($conn,form_query($query_director,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_title,$token));
+                        form_output($conn,form_query($query_title,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
+                        form_output($conn,form_query($query_actor,$token));
+                        // $display_output=$display_output.form_output($conn,form_query($query_director,$token));
+                        form_output($conn,form_query($query_director,$token));
                 }
             }
         }
@@ -83,7 +95,8 @@
     else if ($search_text == "" || $genre_id != "")
     {
         $query_genre="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
-        $display_output=$display_output.form_output($conn,$query_genre);
+        // $display_output=$display_output.form_output($conn,$query_genre);
+        form_output($conn,$query_genre);
     }
     
     echo json_encode($totalSearchResults);
