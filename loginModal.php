@@ -8,7 +8,7 @@
               <input type="submit" name="login" class="login loginmodal-submit" value="Login">
             </form>		
             <div class="login-help">
-            <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            <a href="signup_page.php">Register</a><!-- - <a href="home.php">Forgot Password</a>-->
             </div>
         </div>
     </div>
