@@ -6,19 +6,13 @@ $(document).ready(function() {
             type: 'POST',
             data: {userid: $("#userId").val() ,password: $("#pass").val()},
             success:function(data){
-                if (data.indexOf("Login successful") > -1) {
-                    alert("Login successful");
-                    var myRe = new RegExp('{.*}', 'g');
-                    var myArray = myRe.match(data);
-                    for (msg in myArray) {
-                        var res = msg.split(":");
-                        alert(res);
-                    }
-                    window.location.href = current_page;	
+                var data_comma = data.replace(/}{/g,"},{");
+                var data_list="["+data_comma+"]";
+                var messages = JSON.parse(data_list);
+                for (i = 0; i < messages.length; i++) {
+                    alert(messages[i].message);
                 }
-                else {
-                    alert(data);
-                }							
+                window.location.href=current_page;
             },
             error:function(err){
                 alert(err);

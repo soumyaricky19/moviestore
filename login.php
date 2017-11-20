@@ -35,8 +35,8 @@
                 require('cart_update.php');  
             }
         }
-        echo "Login successful";
+        echo json_encode(array("message" => "Login successful")); 
     } else {
-        echo "Incorrect username/password";
+        echo json_encode(array("message" => "Incorrect Username/Password")); 
     }
 ?>
