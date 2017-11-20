@@ -45,23 +45,17 @@
         }
         switch ($search_criteria) {
             case "title":
-                // $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
                 form_output($conn,form_query($query_title,$entire_text));
                 break;
             case "actor":
-                // $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
                 form_output($conn,form_query($query_actor,$entire_text));
                 break;
             case "director":
-                // $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
                 form_output($conn,form_query($query_director,$entire_text));
                 break;
             default:
-                // $display_output=$display_output.form_output($conn,form_query($query_title,$entire_text));
                 form_output($conn,form_query($query_title,$entire_text));
-                // $display_output=$display_output.form_output($conn,form_query($query_director,$entire_text));
                 form_output($conn,form_query($query_director,$entire_text));
-                // $display_output=$display_output.form_output($conn,form_query($query_actor,$entire_text));
                 form_output($conn,form_query($query_actor,$entire_text));
         } 
         foreach($tokens as $token) {
@@ -69,23 +63,17 @@
             {   
                 switch ($search_criteria) {
                     case "title":
-                        // $display_output=$display_output.form_output($conn,form_query($query_title,$token));
                         form_output($conn,form_query($query_title,$token));
                         break;
                     case "actor":
-                        // $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
                         form_output($conn,form_query($query_actor,$token));
                         break;
                     case "director":
-                        // $display_output=$display_output.form_output($conn,form_query($query_director,$token));
                         form_output($conn,form_query($query_director,$token));
                         break;
                     default:
-                        // $display_output=$display_output.form_output($conn,form_query($query_title,$token));
                         form_output($conn,form_query($query_title,$token));
-                        // $display_output=$display_output.form_output($conn,form_query($query_actor,$token));
                         form_output($conn,form_query($query_actor,$token));
-                        // $display_output=$display_output.form_output($conn,form_query($query_director,$token));
                         form_output($conn,form_query($query_director,$token));
                 }
             }
@@ -95,7 +83,6 @@
     else if ($search_text == "" || $genre_id != "")
     {
         $query_genre="select * from movie where is_available=1 and movie_id in (select movie_id from movie_genre where genre_id=".$genre_id.")";
-        // $display_output=$display_output.form_output($conn,$query_genre);
         form_output($conn,$query_genre);
     }
     
@@ -107,6 +94,7 @@
         global $movie_list, $totalSearchResults;
 
         while ($row = mysqli_fetch_array($result)){
+            $row = array_map('utf8_encode', $row);
             if (!in_array($row['movie_id'], $movie_list)) {
                 array_push($movie_list,$row['movie_id']);
                 $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";                     
