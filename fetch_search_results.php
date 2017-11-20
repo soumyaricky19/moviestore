@@ -87,7 +87,7 @@
     }
     
     echo json_encode($totalSearchResults);
-
+    
     function form_output($conn,$query) {
         $result = mysqli_query($conn,$query);
         $list="";
@@ -96,8 +96,7 @@
         while ($row = mysqli_fetch_array($result)){
             if (!in_array($row['movie_id'], $movie_list)) {
                 array_push($movie_list,$row['movie_id']);
-                $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";     
-                
+                $img = "<a href='description.php?id=".$row['movie_id']."'><img src='" .$row['imageUrl']. "' alt='Image not found' title='".$row['title']."' /></a>";                     
                 if($_SESSION["user_id"] == "admin"){
                     $img = $img."<div class='adminButton'><button id='updateBtn".$row['movie_id']."' type ='button' class='btn btn-success'>Update</button>&nbsp;&nbsp;&nbsp;";
                     $img = $img."<button id='deleteBtn".$row['movie_id']."' type ='button' class='btn btn-danger'>Delete</button></div>";
@@ -108,17 +107,13 @@
                 $list="<div class='cover-item'>".$img."</div>";
                 array_push($totalSearchResults,$list);
             }
-            
         }
-        //return $list;
-        //return $totalSearchResults;
     }
     function form_query($query,$search_token) {
         return $query." like '%".$search_token."%'))";
     }
 
-    function tokenize($search_text)
-    {
+    function tokenize($search_text) {
         $tokens = explode(" ",$search_text); 
         return $tokens;
     }

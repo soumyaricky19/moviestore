@@ -62,7 +62,13 @@ $(document).ready(function() {
         $("#nxtBtn").prop('disabled',true);
         break;
       }
-      table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
+      //table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
+      if (orders[i].is_cancelled == "1"){
+        table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td><td>Cancelled</td></tr>";
+      }
+      else {
+        table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td><td><button type='button' id='btn"+orders[i].movieId+"."+orders[i].orderId+"' class='btn btn-default'>Cancel</button></td></tr>";
+      }
     }
     if(i == orderLength){
       $("#nxtBtn").prop('disabled',true);
@@ -85,7 +91,13 @@ $(document).ready(function() {
     $("#nxtBtn").val(this.value);
     var table = "<table class='table table-bordered'><thead><tr><th>Title</th><th>Quantity</th><th>Price</th><th>Order_id</th><th>Date/Time</th></tr></thead><tbody>";
     for(i = 3*this.value; i < (3*this.value+3); i++){
-      table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
+      //table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td></tr>";          
+      if (orders[i].is_cancelled == "1"){
+        table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td><td>Cancelled</td></tr>";
+      }
+      else {
+        table = table + "<tr><td>"+orders[i].img+"</td><td>"+orders[i].qty+"</td><td>$"+orders[i].price+"</td><td>"+orders[i].orderId+"</td><td>"+orders[i].time+"</td><td><button type='button' id='btn"+orders[i].movieId+"."+orders[i].orderId+"' class='btn btn-default'>Cancel</button></td></tr>";
+      }
     }
     if(this.value == 0){
       $("#prBtn").prop('disabled',true);
@@ -98,6 +110,7 @@ $(document).ready(function() {
       project.style.opacity = 1;
     },500);
   });
+  
   $(document).on("click", ".btn-default", function(){
     var btn=$(this).parent();
     var btnId = $(this).attr('id');

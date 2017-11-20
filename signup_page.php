@@ -33,6 +33,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/admin.css" rel="stylesheet">
     <link href="css/signup.css" rel="stylesheet" >
     <link href="css/login.css" rel="stylesheet">

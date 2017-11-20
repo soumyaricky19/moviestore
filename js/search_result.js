@@ -23,7 +23,6 @@ $(document).ready(function(){
             $('#searchResults').addClass('loader');
         },
         success:function(data){
-            
             var searchContainer = document.querySelector('#searchResults');
             searchContainer.style.opacity = 0;  
             movieResults = JSON.parse(data)
