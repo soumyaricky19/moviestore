@@ -19,7 +19,13 @@
             <li>
                 <form method = 'GET' class='navbar-form navbar-right' action='search_result.php'>
                     <div class='form-group'>
-                        <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40' required/>&nbsp; &nbsp;
+                        <input type = 'text' class='form-control' name = 'search' placeholder = 'Search Movie' size='40' required/>
+                        <select id='criteria' name='criteria' class="form-control">
+                            <option value='all'>All</option>
+                            <option value='title'>Title</option>
+                            <option value='actor'>Actor</option>
+                            <option value='director'>Director</option>
+                        </select>
                         <button type = 'submit' class='btn btn-primary' style = 'width: 150px'>Search</button>
                     </div>
                 </form>

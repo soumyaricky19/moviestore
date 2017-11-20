@@ -3,12 +3,13 @@ $(document).ready(function(){
     window.$_GET = new URLSearchParams(location.search);
     var search = $_GET.get('search');
     var genre = $_GET.get('genre');
+    var criteria = $_GET.get('criteria');
     var urlValue = "";
     if( search == null && genre != null){
         urlValue = 'fetch_search_results.php?genre='+genre;
     }
     else if( search != null && genre == null){
-        urlValue = 'fetch_search_results.php?search='+search;
+        urlValue = 'fetch_search_results.php?search='+search+'&criteria='+criteria;
     }
     var movieResults = "";
     var totalMovies = 0;
@@ -22,9 +23,9 @@ $(document).ready(function(){
             $('#searchResults').addClass('loader');
         },
         success:function(data){
+            
             var searchContainer = document.querySelector('#searchResults');
             searchContainer.style.opacity = 0;  
-            
             movieResults = JSON.parse(data)
             totalMovies = movieResults.length;
             var content = "";
@@ -52,6 +53,9 @@ $(document).ready(function(){
                 // Fade in
                 searchContainer.style.opacity = 1;
             },500);
+        },
+        error:function(err){
+            alert(err);
         }
     });	
 
