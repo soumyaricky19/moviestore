@@ -8,6 +8,12 @@ $(document).ready(function() {
             success:function(data){
                 if (data.indexOf("Login successful") > -1) {
                     alert("Login successful");
+                    var myRe = new RegExp('{.*}', 'g');
+                    var myArray = myRe.match(data);
+                    for (msg in myArray) {
+                        var res = msg.split(":");
+                        alert(res);
+                    }
                     window.location.href = current_page;	
                 }
                 else {
