@@ -243,5 +243,10 @@ $(document).ready(function()
 			}
 		});
 	});
+
+	// Add a new movie to the database
+	$('#addBtn.btn-primary').click(function(e){
+        window.location.href = "admin.php";
+    });
 });
 	
