@@ -63,20 +63,15 @@
                 // alert(arr);
                 var page_name=arr[arr.length - 1];
                 switch(page_name) {
-                    case "login.php":
-                        '#login'.addClass('active');
-                        break;
                     case "signup_page.php":
-                        $('#signup').addClass('active');
+                        $('li#signup a').css('color','white');
                         break;
-                    case "cart.php":
-                        $('#cart').addClass('active');
+                    case "home.php":
+                        $('#home').addClass('active');
                         break;
                     case "order_history.php":
                         $('#orders').addClass('active');
                         break;
-                    default:
-                        $('#home').addClass('active');
                 }
             });
         </script>

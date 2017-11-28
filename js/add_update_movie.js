@@ -70,7 +70,12 @@ $(document).ready(function() {
 		if(imgLink == ""){
 			alert("Please provide the image link to preview.")
 			return false;
-		} else {
+		}
+		else if(imgLink == "No image found for this movie."){
+			alert("No image to preview.")
+			return false;
+		} 
+		else {
 			$("#imagePreview").attr('src',imgLink);
 		}
 	});

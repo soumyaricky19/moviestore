@@ -29,6 +29,9 @@ ul.nav.navbar-nav li#cart a{
     background-color: rgba(10, 10, 10, 1);
     border-color: rgba(10, 10, 10, 1);
 }
+ul.nav.navbar-nav li#cart a:hover{    
+    color: #428bca;
+}
 
 div#carousel {
     margin-top: 70px;
@@ -109,12 +112,23 @@ div.genre.cover-container div.cover-item p{
 div.cartButton{
     display:flex; 
     justify-content:center; 
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 div.cartButton button{
     color:#212121;
     background-color: #73b1ae;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+    border : none;   
+}
+
+div.cartButton button:hover {background-color: #428bca}
+
+div.cartButton button:active {
+  background-color: #428bca;
+  box-shadow: 0 0px #666;
+  transform: translateY(3px);
 }
 div.detailContainer{
     margin-top: 5px;
@@ -131,8 +145,9 @@ h1{
     margin-bottom: 20px;
 }
 input[type="number"], textarea {
-    background-color : #ddd6d6; 
+    background-color : #e0eaea; 
     color: black;
+    border-radius: 5px;
 }
 div.movieDetails{
     color:#d0d3d4;
@@ -196,7 +211,7 @@ div#addMovie.adminButton{
     margin-left: 25px; 
 }
 div#addMovie.adminButton button{
-    color: #f4e9e9;
+    color: #fff;
 }
 /* Add a right margin to each icon */
 .fa {
