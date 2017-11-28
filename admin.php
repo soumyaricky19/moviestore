@@ -17,7 +17,6 @@
         die("Connection failed: " . mysqli_connect_error());
     }
     $movieId = $_GET['movie_id'];
-    
     $query="select * from movie where movie_id='".$movieId."'";
     $result=mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
@@ -26,10 +25,10 @@
 <html>  
     <head>
         <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet">
-        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css", rel="stylesheet">
+        <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js'></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="css/style.css" rel="stylesheet">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
         <link href="css/admin.css" rel="stylesheet">   
         <script src="js/cart.js"></script>
         <script src="js/add_update_movie.js"></script>
@@ -60,7 +59,7 @@
                         </tr>
                         <tr>
                             <td>Image Link</td>
-                            <td><input type="text" class="form-control" id="img" placeholder="Enter image link" value='<?php  echo $row['imageUrl']?>' required>&nbsp;<button id="fetchImage" type = 'button' title="Please fill movie name to search images." class='btn btn-primary'>Fetch Image Url</button></td>
+                            <td><input type="text" class="form-control" id="img" placeholder="Enter image link" value='<?php  echo $row['imageUrl']?>' required>&nbsp;<button id="fetchImage" type = 'button' title="Please fill movie title to search images." class='btn btn-primary'>Fetch Image Url</button><a id="imgPreview" class="btn btn-primary" href='#' data-toggle='modal' data-target='#login-modal'>Image Preview</a></td>
                         </tr>
                         <tr>
                             <td>Duration (Minutes)</td>
@@ -88,6 +87,14 @@
                     <button id="saveBtn" type = 'submit' class='btn btn-primary'>Save</button>
                 </div>
             </form>
+            <!-- The Modal -->
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="loginmodal-container">
+                        <img id='imagePreview' src=''>
+                    </div>
+                </div>
+            </div>
         </div>
   </body>
 </html>

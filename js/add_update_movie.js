@@ -39,28 +39,40 @@ $(document).ready(function() {
 	
 	// Fetch image url from the API
 	$('button#fetchImage').click(function(e){
+		var movieTitle = $("#title").val();
+		if(movieTitle == ""){
+			alert("Please enter movie title in order to fetch the image link.");
+			return;
+		}
         $.ajax({
 			url: 'fetchImage.php',
 			type: 'POST',
-			data:  {movie: $("#title").val()},
+			data:  {movie: movieTitle},
 			beforeSend: function() {
 				$('button#fetchImage').text('');
 				$('button#fetchImage').append("<i class='fa fa-refresh fa-spin'></i>Fetching..");
 			},
 			success:function(data){
-				alert(data);
-				if(data == "No image found for this movie."){
-					$('button#fetchImage').text('Not found');
-				}
-				else {
-					$('button#fetchImage').text('Success');
-				}
+				$('button#fetchImage').text('Fetch Image Url');
 				$("#img").val(data);
+				if(data != "No image found for this movie."){
+					$("#imagePreview").attr('src',data);
+				} 
 			},
 			error:function(err){
 				alert(err);
 			}
 		});
-    });
+	});
+
+	$('a#imgPreview').click(function(e){
+		var imgLink = $("#img").val();
+		if(imgLink == ""){
+			alert("Please provide the image link to preview.")
+			return false;
+		} else {
+			$("#imagePreview").attr('src',imgLink);
+		}
+	});
     
 });

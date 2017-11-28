@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+
 body{
     height: 100%;
     background-color: #dbe9f0;
@@ -14,6 +17,7 @@ table#movieInfo tbody tr td:nth-child(2){
 div.detail{
     padding-left: 50px;
     padding-right: 50px;
+    margin-top: 60px;
 }
 p{
     color: black;
@@ -37,4 +41,48 @@ button#fetchImage{
 /* Add a right margin to each icon */
 .fa {
     margin-right: 8px;
+}
+nav.navbar.navbar-inverse{
+    background-color: rgba(10, 10, 10, 1);
+    width: 1366px;
+    border: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 20px;
+}
+
+ul.nav.navbar-nav li{
+    height: auto;
+}
+ul.nav.navbar-nav li#cart a{
+    padding: 6px;
+    height: auto;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 10px;
+    color: #afced5;
+    background-color: rgba(10, 10, 10, 1);
+    border-color: rgba(10, 10, 10, 1);
+}
+div#addMovie.adminButton{
+    margin-top: 8px;
+    margin-left: 25px; 
+}
+
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  width: 100%;
+  background-color: transparent;
+  margin-top: 25%;
+  text-align: center;
+  border-radius: 2px;
+  overflow: hidden;
+  font-family: roboto;
+  color: inherit;
+}
+
+a#imgPreview{
+    margin-top: 10px;
+    margin-left: 10px;
 }

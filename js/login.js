@@ -24,9 +24,9 @@ $(document).ready(function() {
         });
     });
 
-    $('li#login a').mouseover(function(){  
-        $(this).trigger('click');  
-    });
+    // $('li#login a').mouseover(function(){  
+    //     $(this).trigger('click');  
+    // });
 });
 
     
