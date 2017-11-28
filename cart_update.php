@@ -77,6 +77,11 @@
         $movie_query="select * from movie where is_available=1 and movie_id=".$movie_id;
         $movie_result=mysqli_query($conn, $movie_query);
         $movie_row = mysqli_fetch_array($movie_result);
+        if (!$movie_row) {
+            $message="Not available anymore";
+            echo json_encode(array("message" => $message));     
+            return;
+        }
         $movie_quantity=$movie_row["quantity"];
         $movie_price=$movie_row["price"];
         $movie_title=$movie_row["title"];

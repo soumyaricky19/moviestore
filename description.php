@@ -44,7 +44,7 @@
                         die("Connection failed: " . mysqli_connect_error());
                     }
                     
-                    $query="select * from movie where is_available = 1 and movie_id=".$movie_id;
+                    $query="select * from movie where movie_id=".$movie_id;
                     $result = mysqli_query($conn,$query);
                     $row = mysqli_fetch_array($result);
                     
@@ -58,6 +58,10 @@
                     }
                     $casts=join(",",$cast);
                     $quantity=$row["quantity"];
+                    if ($row["is_available"] == 0)
+                    {
+                        $quantity="NOT AVAILABLE ANYMORE";
+                    }
                     $info='<table><tr><td>Title: '.$row["title"].'</td></tr><tr><td>Description: '.$row["description"].'</td></tr><tr><td>Director: '.$row["director"].'</td></tr><tr><td>Year: '.$row["year"].'</td></tr><tr><td>Duration: '.$row["duration"].' mins</td></tr><tr><td> Rating: '.$row["rating"].'</td></tr><tr><td> Votes:'.$row["votes"].'</td></tr><tr><td>Available quantity: '.$quantity.'</td></tr><tr><td>Price:'.$row["price"].'</td></tr><tr><td>Cast: '.$casts.'</td></tr></table>';
 
                     $poster =  preg_replace('/185/','500',$row['imageUrl']);  

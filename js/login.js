@@ -12,7 +12,9 @@ $(document).ready(function() {
                 var msg="";
                 for (i = 0; i < messages.length; i++) {
                     msg=messages[i].message;
-                    alert(msg);
+                    if (msg.indexOf("Cart Updated") == -1) { 
+                        alert(msg);
+                    }
                 }
                 if (msg.indexOf("Login successful")>-1) {
                     window.location.href=current_page;
