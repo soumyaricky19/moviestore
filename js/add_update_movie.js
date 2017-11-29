@@ -4,9 +4,9 @@ $(document).ready(function() {
 
         var url = window.location.href;
         window.$_GET = new URLSearchParams(location.search);
-        var movie_id = $_GET.get('movie_id');
+		var movie_id = $_GET.get('movie_id');
         // Add new movie to the database
-        if(url == "http://localhost/admin.php"){
+        if(movie_id == null){
             $.ajax({
 				url: 'update_movie_admin.php',
 				type: 'POST',

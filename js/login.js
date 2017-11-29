@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $("#invId").hide();
     $('#loginForm').submit(function(e){
         var current_page=window.location.href;
         $.ajax({
@@ -13,7 +14,11 @@ $(document).ready(function() {
                 for (i = 0; i < messages.length; i++) {
                     msg=messages[i].message;
                     if (msg.indexOf("Cart Updated") == -1 && msg.indexOf("Login successful") == -1 ) { 
-                        alert(msg);
+                        if(msg == "Incorrect Username/Password"){
+                            $("#invId").show();
+                        } else {
+                            alert(msg);
+                        }
                     }
                 }
                 if (msg.indexOf("Login successful")>-1) {

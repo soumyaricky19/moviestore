@@ -98,3 +98,8 @@
   font-size: 12px;
   text-align: right;
 }
+
+#invId{
+  padding-left: 15%;
+  color: red;
+}

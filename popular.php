@@ -15,7 +15,7 @@
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	$query="select * from movie where is_available = 1 order by votes limit 15";
+	$query="select * from movie where is_available = 1 order by votes desc limit 15";
 	$result = mysqli_query($conn,$query);
 	$list="";
 
