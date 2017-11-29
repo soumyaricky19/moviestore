@@ -128,6 +128,12 @@ $(document).ready(function() {
           success:function(data){
             btn.empty();
             btn.append("Cancelled");
+            for(i = 0; i < orderLength; i++){
+              if (orders[i].orderId == orderId){
+                orders[i].is_cancelled = 1; 
+                break;
+              }
+            }
           },
           error:function(err){
             alert(err);

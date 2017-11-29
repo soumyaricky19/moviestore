@@ -12,7 +12,7 @@ $(document).ready(function() {
                 var msg="";
                 for (i = 0; i < messages.length; i++) {
                     msg=messages[i].message;
-                    if (msg.indexOf("Cart Updated") == -1) { 
+                    if (msg.indexOf("Cart Updated") == -1 && msg.indexOf("Login successful") == -1 ) { 
                         alert(msg);
                     }
                 }
