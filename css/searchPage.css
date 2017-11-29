@@ -37,7 +37,8 @@ div#searchResults {
 
 div.searchResults.cover-container {
     overflow-x: hidden;
-    padding-left: 40px;
+    /* padding-left: 40px; */
+    text-align: center;
 }
 
 .loader {
