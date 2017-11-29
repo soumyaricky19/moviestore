@@ -29,7 +29,7 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
 
 
 .feedback {
-    color: #9ab;
+    color: #052b52;
     font-size: 90%;
     padding: 0 .25em;
     font-family: Courgette, cursive;
@@ -45,8 +45,10 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
 }
 
 .info {
-	background: #ffc;
-	border: 2px solid #cc9;
+	/* background: #ffc;
+    border: 2px solid #cc9; */
+    /* font-weight: bold; */
+    font-size: 15px;
 }
 
 .error {
